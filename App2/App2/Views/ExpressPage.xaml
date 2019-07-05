@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:App2.ViewModels"
+             mc:Ignorable="d"
+             x:Class="App2.Views.ExpressPage" Visual="Material">
+
+    <ContentPage.BindingContext>
+        <vm:ExpressViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label>Name</Label>
+            <Entry x:Name="txtName"></Entry>
+            <Label>Email</Label>
+            <Entry x:Name="txtEmail"></Entry>
+
+            <CollectionView ItemsSource="{Binding List}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"
+                        Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="80" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="1"
+                       Text="{Binding Name}"
+                       FontAttributes="Bold"
+                       LineBreakMode="TailTruncation" />
+
+                            <Label Grid.Row="1"
+                       Grid.Column="1"                    
+                       LineBreakMode="TailTruncation"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Name}"/>
+                                        <Span Text="{Binding Location}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Content Page Event" x:Name="btnContentPage" Clicked="BtnContentPage_Clicked"></Button>
+            <Button Text="ViewModel Page Event" x:Name="btnViwModelPage" Command="{Binding InvokeViewModelPageContentCommand}"></Button>
+            <Button Text="Delete Page Event" x:Name="btnDeletePage" Command="{Binding DeleteViewModelPageContentCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
