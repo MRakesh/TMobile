@@ -24,7 +24,7 @@
                     <Label LineBreakMode="CharacterWrap"></Label>
                     <Label Text="Line Break"></Label>-->
                     <ActivityIndicator Color="Green" IsRunning="False" x:Name="indicator" Visual="Material" ></ActivityIndicator>
-                    <Button Text="Log in" x:Name="btnLogin" Clicked="BtnLogin_Clicked"/>
+                    <Button Text="Log in " x:Name="btnLogin" Clicked="BtnLogin_Clicked"/>
                 </FlexLayout>
             </FlexLayout>
         </FlexLayout>
