@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.Views.Fileload">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Upload" Clicked="OnUpload"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Button x:Name="takePhoto" Text="Take Photo"/>
+                <Button x:Name="pickPhoto" Text="Pick Photo"/>
+                <Button x:Name="takeVideo" Text="Take Video"/>
+                <Button x:Name="pickVideo" Text="Pick Video"/>
+                <ProgressBar x:Name="progress" Progress="0.0" IsVisible="False" />
+                <Image x:Name="image"/>
+
+                <Label Text="File Uplaoding"/>
+                <Button Text="Pick File" Clicked="Button_Clicked" HorizontalOptions="Center"  
+               VerticalOptions="Center"/>
+                <Entry x:Name="txtFileName1"/>
+                <Entry x:Name="txtFileName2"/>
+                <Label Text="File Is :" x:Name="lbl"/>
+                <Label Text="File Is :" x:Name="lbl1"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

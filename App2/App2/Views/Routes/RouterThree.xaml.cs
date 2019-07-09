@@ -16,6 +16,10 @@ namespace App2.Views.Routes
         public RouterThree()
         {
             InitializeComponent();
+           
+
         }
+
+
     }
 }

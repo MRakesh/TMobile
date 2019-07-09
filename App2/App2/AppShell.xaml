@@ -45,6 +45,21 @@
             </ShellContent>
         </ShellSection>
     </ShellItem>
+
+    <ShellItem FlyoutIcon="bars"  Title="Login View">
+        <ShellSection Title="Login Page">
+            <ShellContent Title="Login Page"  Route="routerOne">
+                <local:LogInPage />
+            </ShellContent>
+        </ShellSection>
+    </ShellItem>
+     <ShellItem FlyoutIcon="bars"  Title="File Load">
+        <ShellSection Title="Fileload Page">
+            <ShellContent Title="Fileload Page"  Route="fileload">
+                <local:Fileload />
+            </ShellContent>
+        </ShellSection>
+    </ShellItem>
     
     <!--<Shell.MenuItemTemplate>
         <DataTemplate>

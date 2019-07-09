@@ -10,6 +10,8 @@
             <Label Text="This is Router Three Content!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+            <Picker></Picker>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

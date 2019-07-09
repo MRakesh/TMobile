@@ -3,30 +3,187 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:App2.ViewModels"
              mc:Ignorable="d"
+             xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView" Padding="0,20,0,0"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             xmlns:b="clr-namespace:App2.Behaviors"
+             xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
              x:Class="App2.Views.LogInPage" Visual="Material">
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <StyleSheet Source="../Styles/LoginPage.css"/>
-    </ContentPage.Resources>
-    
+    </ContentPage.Resources>-->
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <FlexLayout StyleClass="body">
+        <!--<FlexLayout StyleClass="body">
             <FlexLayout  StyleClass="container" >
                 <Label Text="Login" class="logo"/>
                 <FlexLayout StyleClass="login-form">
-                    
+
                     <Entry Placeholder="UserName" x:Name="txtUser"/>
                     <Entry Placeholder="Password" IsPassword="true" x:Name="txtPsw"/>
 
-                    <Label Text="&#10;"></Label>                   
-                    <!--<Label WidthRequest="100"></Label>
+                    <Label Text="&#10;"></Label>
+                    <Label Text="Select Category"></Label>
+                    <Picker Title="Select a Category"
+                            TitleColor="Red"
+                            ItemsSource="{Binding List}"
+                            ItemDisplayBinding="{Binding Name}" />
+
+                    -->
+        <!--<Label WidthRequest="100"></Label>
                     <Label LineBreakMode="CharacterWrap"></Label>
                     <Label LineBreakMode="CharacterWrap"></Label>
                     <Label Text="Line Break"></Label>-->
+        <!--
                     <ActivityIndicator Color="Green" IsRunning="False" x:Name="indicator" Visual="Material" ></ActivityIndicator>
                     <Button Text="Log in" x:Name="btnLogin" Clicked="BtnLogin_Clicked"/>
                 </FlexLayout>
             </FlexLayout>
-        </FlexLayout>
+        </FlexLayout>-->
+        <ScrollView>
+            <StackLayout>
+                <Entry Placeholder="UserName" x:Name="txtUser"/>
+                <Entry Placeholder="Password" IsPassword="true" x:Name="txtPsw"/>
+
+                <Label Text="Select Category"></Label>
+                <Picker Title="Select a Category" x:Name="picker"  SelectedIndexChanged="Picker_SelectedIndexChanged"
+                            TitleColor="Red"
+                            ItemsSource="{Binding List}"
+                            ItemDisplayBinding="{Binding Name}" />
+
+                <Label Text="Loading Items on scroll"></Label>
+                <Label Text="Infinite Scroll" FontSize="52" TextColor="DeepPink" Margin="20,0" />
+                <Label Text="Xamarin.Forms" FontSize="46" TextColor="DodgerBlue" Margin="20,0" />
+
+                <ListView ItemsSource="{Binding Items}"  HasUnevenRows="True" HeightRequest="210">
+
+                    <ListView.Behaviors>
+                        <extended:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
+                    </ListView.Behaviors>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="12">
+                                    <Label Text="{Binding Name}" FontSize="30" TextColor="Black" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                    <ListView.Footer>
+                        <Grid Padding="6" IsVisible="{Binding IsBusy}">
+                            <!-- set the footer to have a zero height when invisible CachingStrategy="RecycleElement"-->
+                            <Grid.Triggers>
+                                <Trigger TargetType="Grid" Property="IsVisible" Value="False">
+                                    <Setter Property="HeightRequest" Value="0" />
+                                </Trigger>
+                            </Grid.Triggers>
+                            <!-- the loading content -->
+                            <Label Text="Loading..." TextColor="DeepPink" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
+                        </Grid>
+                    </ListView.Footer>
+
+                </ListView>
+                
+
+                <Label Text="Select List of Collection View Items"></Label>
+
+                <CollectionView ItemsSource="{Binding StateList}" HeightRequest="210">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Horizontal"
+                        Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="35" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="80" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="1"
+                       Text="{Binding Name}"
+                       FontAttributes="Bold"
+                       LineBreakMode="TailTruncation" />
+
+                                <Label Grid.Row="1"
+                       Grid.Column="1"                    
+                       LineBreakMode="TailTruncation"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Name}"/>
+                                            <Span Text="{Binding Location}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label Text="Select List of Items"></Label>
+                <ListView x:Name="lvwUsers" 
+            HasUnevenRows="true" HeightRequest="210"
+            SeparatorVisibility="Default" 
+            ItemsSource="{Binding Users}"
+                  lv:MultiSelect.Enable="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <lv:SelectableCell x:Name="SelectableCell">
+
+                                <lv:SelectableCell.CheckView>
+                                    <Label Text="✔"/>
+                                </lv:SelectableCell.CheckView>
+
+                                <lv:SelectableCell.DataView>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Name}"></Label>
+                                    </StackLayout>
+                                </lv:SelectableCell.DataView>
+
+                            </lv:SelectableCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                    <ListView.Behaviors>
+                        <!--<lv:SelectedItemBehavior Command="{Binding DisplayNameCommand}" PropertyName="Name"/>-->
+                        <lv:SelectedItemBehavior Command="{Binding DisplayNameCommand}"/>
+                    </ListView.Behaviors>
+
+                </ListView>
+                <Label Text="Select Date of Submission"></Label>
+                <DatePicker
+            Date="06/21/2018" />
+                <Label Text="Are eligible for this position"></Label>
+                <CheckBox IsChecked="true" Color="Magenta"/>
+                <Label Text="Checkbox for input Kit"></Label>
+                <input:CheckBox Text="Option 1" Type="Check" Visual="Material" />
+                <Label Text="Male or Female check"></Label>
+                <input:RadioButtonGroupView Visual="Material">
+                    <input:RadioButton Text="Option 1" Color="Blue" TextColor="Red" />
+                    <input:RadioButton Text="Option 2" Color="Green" TextColor="Red" />
+                    <input:RadioButton Text="Option 3" Color="Red" TextColor="Red" />
+                    <input:RadioButton Text="Option 4" Color="Magenta" TextColor="Red" />
+                </input:RadioButtonGroupView>
+                <!--<Label WidthRequest="100"></Label>
+                    <Label LineBreakMode="CharacterWrap"></Label>
+                    <Label LineBreakMode="CharacterWrap"></Label>
+                    <Label Text="Line Break"></Label>-->
+                <ActivityIndicator Color="Green" IsRunning="False" x:Name="indicator" Visual="Material" ></ActivityIndicator>
+                <Button Text="Log in" x:Name="btnLogin" Clicked="BtnLogin_Clicked"/>
+                <!--<Button Text="See The Count" x:Name="btnCount" Command="{Binding DisplayListIdsCommand}"/>-->
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

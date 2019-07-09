@@ -21,6 +21,7 @@ namespace App2
             Routing.RegisterRoute("routerTwo", typeof(RouterTwo));
             Routing.RegisterRoute("routerThree", typeof(RouterThree));
             Routing.RegisterRoute("loginview", typeof(LogInPage));
+            Routing.RegisterRoute("fileload", typeof(Fileload));
         }
     }
 }
