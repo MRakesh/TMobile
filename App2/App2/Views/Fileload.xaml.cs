@@ -57,6 +57,7 @@ namespace App2.Views
                     await DisplayAlert("Photos Not Supported", ":( Permission not granted to photos.", "OK");
                     return;
                 }
+
                 var _mediaFile = await Plugin.Media.CrossMedia.Current.PickPhotoAsync();
 
 
