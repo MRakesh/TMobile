@@ -28,6 +28,8 @@
             <Button x:Name="btnOne" Text="Navigateto RouterOne" Clicked="BtnOne_Clicked"></Button>
             <Button x:Name="btnTwo" Text="Navigateto RouterTwo" Clicked="BtnTwo_Clicked"></Button>
             <Button x:Name="btnThree" Text="Navigateto RouterThree" Clicked="BtnThree_Clicked"></Button>
+            <Entry Text="somet"></Entry>
+            <Label TextColor="Red" BackgroundColor="Black">somem mentor the appliction in the dot neeeeet wrold</Label>
         </StackLayout>
     </StackLayout>
 
