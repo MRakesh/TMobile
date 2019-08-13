@@ -4,10 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="App2.Views.Associate.AssociateHome">
+             x:Class="App2.Views.Contact.ContactHome">
     <ContentPage.Content>
         <StackLayout>
-            <Button  Text="Get chats for the Associate" Command="{Binding GetChatsListCommand}"></Button>
+            <Button  Text="Get chats for the Recruiter" Command="{Binding GetChatsListCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

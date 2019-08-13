@@ -24,7 +24,7 @@ namespace App2.Services
         {
 
         }
-        public async Task<string> GetTokenForLogin(LoginModel input)
+        public async Task<AngUserStatusBase> GetTokenForLogin(LoginModel input)
         {
             CookieContainer _cookieContainer = new CookieContainer();
             var baseAddress = new Uri("https://thisishire.com");
@@ -41,12 +41,15 @@ namespace App2.Services
 
                 if (content.IsSuccessStatusCode)
                 {
-                    var Response = content.Content.ReadAsStringAsync().Result;
+                    var response = await content.Content.ReadAsStringAsync();
+                    var model = JsonConvert.DeserializeObject<AngUserStatusBase>(response);
+                    
                     string cookieName = CopyCookies(content, baseAddress, _cookieContainer);
                     Application.Current.Properties["appCookie"] = cookieName;
-                    return "Login successful....";
+                    return model;
+                    //return "Login successful....";
                 }
-                return content.ReasonPhrase;
+                return null; //content.ReasonPhrase;
             }
         }
 
@@ -58,7 +61,7 @@ namespace App2.Services
             var baseAddress = new Uri("https://thisishire.com");
             using (var _Client = new HttpClient(new HttpClientHandler() { UseCookies = false }) { BaseAddress = baseAddress })
             {
-                var message = new HttpRequestMessage(HttpMethod.Get, "api/recruiter/getRecruiterTopicPopUpChats/194");
+                var message = new HttpRequestMessage(HttpMethod.Get, url);
                 message.Headers.Add("Cookie", cookiNames);
                 var content1 = await _Client.SendAsync(message);
                 content1.EnsureSuccessStatusCode();

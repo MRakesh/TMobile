@@ -1,8 +1,7 @@
 ﻿using App2.Views;
 using App2.Views.Associate;
+using App2.Views.Contact;
 using App2.Views.Routes;
-using System;
-using System.Collections.Generic;
 
 using Xamarin.Forms;
 
@@ -24,6 +23,7 @@ namespace App2
             Routing.RegisterRoute("loginview", typeof(LogInPage));
             Routing.RegisterRoute("fileload", typeof(Fileload));
             Routing.RegisterRoute("AssociateHome", typeof(AssociateHome));
+            Routing.RegisterRoute("ContactHome", typeof(ContactHome));
         }
     }
 }

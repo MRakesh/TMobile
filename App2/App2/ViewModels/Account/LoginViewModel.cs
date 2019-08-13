@@ -1,13 +1,14 @@
 ﻿using App2.Helpers;
 using App2.Models;
 using App2.Services;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace App2.ViewModels
 {
-    public class LoginViewModel
+    public class LoginViewModel : BaseViewModel
     {
         public IAccountService _accountService => DependencyService.Get<IAccountService>() ?? new AccountService();
         public LoginModel LoginModel { get; set; } = new LoginModel();
@@ -25,10 +26,30 @@ namespace App2.ViewModels
 
         private async Task LoginAsync()
         {
-            if (!ValidationHelper.IsFormValid(LoginModel, _page)) { return; }
-            string responce = await _accountService.GetTokenForLogin(LoginModel);
-            await _page.DisplayAlert("Status", responce, "OK");
-            await Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
+            try
+            {
+                IsBusy = true;
+                //  System.Threading.Thread.Sleep(2500);
+                if (!ValidationHelper.IsFormValid(LoginModel, _page)) { IsBusy = false; return; }
+                var response = await _accountService.GetTokenForLogin(LoginModel);
+                //if (!string.IsNullOrEmpty(responce))
+                IsBusy = false;
+                if (response.result.Message.ToLower().Contains("bad"))
+                    await _page.DisplayAlert("Status", "Wrong Login and Email...", "OK");
+                else
+                {
+                   // await _page.DisplayAlert("Status", response.result.Type, "OK");
+                    if (response.result.Type.ToLower() == "recuiter")
+                        await Shell.Current.GoToAsync(new ShellNavigationState("ContactHome"), true);
+                    if (response.result.Type.ToLower() == "associate")
+                        await Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
+                }
+            }
+            catch (Exception ex)
+            {
+                //await _page.DisplayAlert("Status", ex.Message + " " + ex.StackTrace, "OK");
+                await _page.DisplayAlert("Status", "Wrong Login and Email...", "OK");
+            }
         }
     }
 }

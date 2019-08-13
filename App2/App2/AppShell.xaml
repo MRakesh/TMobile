@@ -57,6 +57,16 @@
             </ShellContent>
         </Tab>
     </FlyoutItem>
+
+    <FlyoutItem Title="Upload File"
+                Icon="tab_feed.png">
+        <Tab>
+            <ShellContent>
+                <local:Fileload />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    
     <!--<FlyoutItem Title="Login Page"
                 Icon="tab_feed.png">
         <Tab Title="About"    

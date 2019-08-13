@@ -6,7 +6,7 @@ namespace App2.Services
     public interface IAccountService
     {
         bool IsCoockiExists();
-         Task<string> GetTokenForLogin(LoginModel input);
+         Task<AngUserStatusBase> GetTokenForLogin(LoginModel input);
         Task<string> GetResponseFromAPI(string url);
     }
 }
