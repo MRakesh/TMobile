@@ -14,8 +14,8 @@
             <Label Text="Username"/>
             <Entry Text="{Binding LoginModel.Username}"/>
             <Label x:Name="LoginModel_UsernameError" 
-
         IsVisible="False" TextColor="Red" />
+            
             <Label Text="Password" />
             <Entry IsPassword="true" Text="{Binding LoginModel.Password}"/>
             <Label x:Name="LoginModel_PasswordError" 

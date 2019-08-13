@@ -8,14 +8,14 @@ using Xamarin.Forms;
 
 namespace App2.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class RegisterViewModel : BaseViewModel
     {
         public IAccountService _accountService => DependencyService.Get<IAccountService>() ?? new AccountService();
         public LoginModel LoginModel { get; set; } = new LoginModel();
         public ICommand LoginInCommand { get; }
         private Page _page;
 
-        public LoginViewModel(Page page)
+        public RegisterViewModel(Page page)
         {
             _page = page;
             LoginInCommand = new Command(async () => await LoginAsync());
@@ -38,7 +38,7 @@ namespace App2.ViewModels
                     await _page.DisplayAlert("Status", "Wrong Login and Email...", "OK");
                 else
                 {
-                   // await _page.DisplayAlert("Status", response.result.Type, "OK");
+                    // await _page.DisplayAlert("Status", response.result.Type, "OK");
                     if (response.result.Type.ToLower() == "associate")
                         await Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
                     if (response.result.Type.ToLower() == "recruiter")
@@ -51,5 +51,6 @@ namespace App2.ViewModels
                 await _page.DisplayAlert("Status", "Wrong Login and Email...", "OK");
             }
         }
+
     }
 }

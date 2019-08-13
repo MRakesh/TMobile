@@ -4,8 +4,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -13,7 +11,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace App2.Services
 {
@@ -34,7 +31,7 @@ namespace App2.Services
             {
                 _Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var json = JsonConvert.SerializeObject(new Post { Username = input.Username, Password = input.Password, RememberMe = false });
+                var json = JsonConvert.SerializeObject(input);
                 //var json = JsonConvert.SerializeObject(new Post { Username = "rakesh.maggidi@itghar.com", Password = "20itghar@", RememberMe = false });
                 var userContent = new StringContent(json, Encoding.UTF8, "application/json");
                 var content = await _Client.PostAsync("/api/account/login", userContent);
@@ -43,7 +40,7 @@ namespace App2.Services
                 {
                     var response = await content.Content.ReadAsStringAsync();
                     var model = JsonConvert.DeserializeObject<AngUserStatusBase>(response);
-                    
+
                     string cookieName = CopyCookies(content, baseAddress, _cookieContainer);
                     Application.Current.Properties["appCookie"] = cookieName;
                     return model;
@@ -69,11 +66,32 @@ namespace App2.Services
                 if (content1.IsSuccessStatusCode)
                 {
 
-                    return await content1.Content.ReadAsStringAsync();                   
+                    return await content1.Content.ReadAsStringAsync();
                 }
                 else
                 {
                     return await content1.Content.ReadAsStringAsync();
+                }
+            }
+        }
+
+        public async Task PostDataToAPI(Object input)
+        {
+            var baseAddress = new Uri("https://thisishire.com");
+
+            ////string url1 = "https://thisishire.com/jobs/detail/4366";
+            using (var _Client = new HttpClient() { BaseAddress = baseAddress })
+            {
+                _Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var json = JsonConvert.SerializeObject(input);
+                var userContent = new StringContent(json, Encoding.UTF8, "application/json");
+                var content = await _Client.PostAsync("/api/candidateAccount/candidateregistration", userContent);
+
+                if (content.IsSuccessStatusCode)
+                {
+                    var response = await content.Content.ReadAsStringAsync();
+                    var model = JsonConvert.DeserializeObject<AngUserStatusBase>(response);
                 }
             }
         }
