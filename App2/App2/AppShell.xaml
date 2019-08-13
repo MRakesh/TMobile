@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-       mc:Ignorable="d"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:local="clr-namespace:App2.Views"
-       xmlns:local1="clr-namespace:App2.Views.Routes"
-       Title="App2"
+       xmlns:local2="clr-namespace:App2.Views.Account"
+       mc:Ignorable="d"
+       Title="App2" Visual="Material"
        x:Class="App2.AppShell">
 
+    <!--<Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="Black"
+              HeightRequest="300">
+                <Image Aspect="AspectFill"
+                   Source="bird.jfif"
+                   Opacity="0.6" />
+                <Label Text="Header Page."
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>-->
+
     <Shell.FlyoutHeader>
-        <local:FlyoutHeader></local:FlyoutHeader>
+        <local:FlypoutContentHeader/>
     </Shell.FlyoutHeader>
 
     <!--<Shell.MenuItems>
@@ -21,8 +37,97 @@
                   CommandParameter="2"
                   Text="Item 2" />
     </Shell.MenuItems>-->
-   
-    <ShellItem FlyoutIcon="bars"  Title="Home Page">
+
+    <!--<views:postjob IconImageSource="cat.png" />
+    <views:postjob IconImageSource="dog.png" />-->
+
+    <!--<FlyoutItem Title="Cats"
+                Icon="tab_feed.png">
+        <Tab>
+            <ShellContent>
+                <views:postjob />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>-->
+    <FlyoutItem Title="Login"
+                Icon="tab_feed.png">
+        <Tab>
+            <ShellContent>
+                <local2:Login />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <!--<FlyoutItem Title="Login Page"
+                Icon="tab_feed.png">
+        <Tab Title="About"    
+                 Icon="tab_about.png">
+            <ShellContent>
+                <local:AboutPage />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>-->
+
+    <!--<ShellItem FlyoutIcon="bars"  Title="Post Job">
+        <ShellSection Title="Home Page">
+            <ShellContent Title="Home Page" >
+                <views:postjob />
+
+            </ShellContent>
+        </ShellSection>
+    </ShellItem>-->
+
+
+
+    <!--<TabBar>
+        <Tab Title="Feed Page" Icon="tab_feed.png">
+            <ShellContent Title="Feed"  ContentTemplate="{DataTemplate views:postjob}">
+            </ShellContent>
+            <ShellContent Title="News"  ContentTemplate="{DataTemplate views:postjob}">
+            </ShellContent>
+        </Tab>
+        <Tab Title="About Page" Icon="tab_about.png" >
+            <ShellContent ContentTemplate="{DataTemplate views:postjob}">
+            </ShellContent>
+        </Tab>
+    </TabBar>-->
+
+
+    <!--<TabBar>
+        <views:postjob Title="Feed Page"/>
+        <views:postjob  Title="About Page"/>
+    </TabBar>-->
+
+
+    <!--<TabBar>
+        <Tab Title="Feed Page" Icon="tab_feed.png">
+            <ShellContent  ContentTemplate="{DataTemplate views:postjob}">
+            </ShellContent>
+        </Tab>
+        <Tab Title="About Page" Icon="tab_about.png" >
+            <ShellContent ContentTemplate="{DataTemplate views:postjob}">
+            </ShellContent>
+        </Tab>
+    </TabBar>-->
+
+
+    <!--<TabBar>
+        <Tab Title="Feed"    
+                 Icon="tab_feed.png">
+            <ShellContent Icon="tab_feed.png">
+                <views:postjob/>
+            </ShellContent>
+
+        </Tab>
+        <Tab Title="About"    
+                 Icon="tab_about.png">
+            <ShellContent>
+                <views:postjob />
+            </ShellContent>
+        </Tab>
+    </TabBar>-->
+
+
+    <!--<ShellItem FlyoutIcon="bars"  Title="Home Page">
         <ShellSection Title="Home Page">
             <ShellContent Title="Home Page" >
                 <local:AboutPage />
@@ -59,8 +164,8 @@
                 <local:Fileload />
             </ShellContent>
         </ShellSection>
-    </ShellItem>
-    
+    </ShellItem>-->
+
     <!--<Shell.MenuItemTemplate>
         <DataTemplate>
             <ContentView>
@@ -68,9 +173,9 @@
             </ContentView>
         </DataTemplate>
     </Shell.MenuItemTemplate>-->
-    
-  
-  
+
+
+
 
     <!-- 
         Styles and Resources 

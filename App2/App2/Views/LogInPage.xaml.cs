@@ -15,32 +15,31 @@ namespace App2.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
     {
-        LoginViewModel viewModel;
+        LoginViewModelTemp viewModel;
         public LogInPage()
         {
             InitializeComponent();
             int id = 2;
-            viewModel = new LoginViewModel();
+            viewModel = new LoginViewModelTemp();
             this.picker.SelectedIndex = viewModel.StateList.IndexOf(viewModel.StateList.First(e => e.Id == id));
-            BindingContext = new LoginViewModel();
+            BindingContext = new LoginViewModelTemp();
         }
 
         private void BtnLogin_Clicked(object sender, EventArgs e)
         {
             string selectedList = string.Empty;
-            //var litems = lvwUsers.ItemsSource;
+            var litems = lvwUsers.ItemsSource;
             //var litems1 = lvwUsers.SelectedItem;
 
-            //foreach (var item in litems)
-            //{
-            //    var selectedItem = (SelectableItem<State>)item;
-            //    if (selectedItem.IsSelected)
-            //    {
-            //        var state = selectedItem.Data;
-            //        selectedList += state.Name + ", ";
-            //    }
-
-            //}
+            foreach (var item in litems)
+            {
+                var selectedItem = (SelectableItem<State>)item;
+                if (selectedItem.IsSelected)
+                {
+                    var state = selectedItem.Data;
+                    selectedList += state.Name + ", ";
+                }
+            }
 
             DisplayAlert("User Details", selectedList, "ok");
             //indicator.IsRunning = true;
@@ -76,5 +75,9 @@ namespace App2.Views
 
         }
 
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            lvwUsers.ItemsSource = viewModel.Users.Where(ep => ep.Data.Name.ToLower().Contains(searchBar.Text.ToLower()));
+        }
     }
 }

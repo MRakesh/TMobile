@@ -11,7 +11,7 @@ using Xamarin.Forms.MultiSelectListView;
 
 namespace App2.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModelTemp : BaseViewModel
     {
         private bool _isBusy;
         private const int PageSize = 15;
@@ -50,7 +50,7 @@ namespace App2.ViewModels
             set;
         }
 
-        public LoginViewModel()
+        public LoginViewModelTemp()
         {
             Items = new InfiniteScrollCollection<State>
             {

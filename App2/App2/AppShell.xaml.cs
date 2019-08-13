@@ -1,4 +1,5 @@
 ﻿using App2.Views;
+using App2.Views.Associate;
 using App2.Views.Routes;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace App2
             Routing.RegisterRoute("routerThree", typeof(RouterThree));
             Routing.RegisterRoute("loginview", typeof(LogInPage));
             Routing.RegisterRoute("fileload", typeof(Fileload));
+            Routing.RegisterRoute("AssociateHome", typeof(AssociateHome));
         }
     }
 }

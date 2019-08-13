@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.Views.Account.Login">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="Login" HorizontalOptions="Center" FontSize="50"/>
+            <Label Text="{Binding Message}" 
+
+        IsVisible="False" TextColor="Red"/>
+            <Label Text="Username"/>
+            <Entry Text="{Binding LoginModel.Username}"/>
+            <Label x:Name="LoginModel_UsernameError" 
+
+        IsVisible="False" TextColor="Red" />
+            <Label Text="Password" />
+            <Entry IsPassword="true" Text="{Binding LoginModel.Password}"/>
+            <Label x:Name="LoginModel_PasswordError" 
+
+        IsVisible="False" TextColor="Red" />
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding LoginModel.RememberMe}" 
+
+            HorizontalOptions="Start" />
+                <Label Text="Remember" 
+
+            HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+            </StackLayout>
+            <Button Text="Login" 
+
+        Command="{Binding LoginInCommand}" BackgroundColor="LightBlue" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

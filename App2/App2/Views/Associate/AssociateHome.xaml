@@ -4,13 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="App2.Views.FlyoutHeader">
+             x:Class="App2.Views.Associate.AssociateHome">
     <ContentPage.Content>
         <StackLayout>
-            <Grid HeightRequest="200">
-                <Image Source="mty.jpg" Aspect="AspectFill" />
-                <Image Source="userimg.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60" />
-            </Grid>
+            <Button  Text="Get chats for the recruiter" Command="{Binding GetChatsListCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

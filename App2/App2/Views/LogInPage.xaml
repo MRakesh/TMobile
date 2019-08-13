@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:vm="clr-namespace:App2.ViewModels"
-             mc:Ignorable="d"
-             xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView" Padding="0,20,0,0"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             xmlns:b="clr-namespace:App2.Behaviors"
              xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+             xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView"
+             mc:Ignorable="d"
+             Padding="0,20,0,0"
              x:Class="App2.Views.LogInPage" Visual="Material">
     <!--<ContentPage.Resources>
         <StyleSheet Source="../Styles/LoginPage.css"/>
     </ContentPage.Resources>-->
     <ContentPage.BindingContext>
-        <vm:LoginViewModel/>
+        <vm:LoginViewModelTemp/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <!--<FlexLayout StyleClass="body">
@@ -132,6 +132,7 @@
                 </CollectionView>
 
                 <Label Text="Select List of Items"></Label>
+                <SearchBar x:Name="searchBar" TextChanged="SearchBar_TextChanged"/>
                 <ListView x:Name="lvwUsers" 
             HasUnevenRows="true" HeightRequest="210"
             SeparatorVisibility="Default" 

@@ -6,6 +6,13 @@
              mc:Ignorable="d"
              x:Class="App2.App">
     <Application.Resources>
-        
+        <Color x:Key="PageBackgroundColor">Yellow</Color>
+        <Color x:Key="HeadingTextColor">Red</Color>
+        <Color x:Key="NormalTextColor">Blue</Color>
+        <Style x:Key="LabelPageHeadingStyle" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="TextColor" Value="{StaticResource HeadingTextColor}" />
+        </Style>
     </Application.Resources>
 </Application>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:App2.Renderers"
+             mc:Ignorable="d"
+             x:Class="App2.Views.Job.postjob">
+    <ContentPage.Resources>
+        <Color x:Key="PageBackgroundColor">Magenta</Color>
+        <Color x:Key="HeadingTextColor">Orange</Color>
+        <Color x:Key="NormalTextColor">Blue</Color>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Posting Job"></Label>
+            <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+                <!--<Label x:Name="lblTitle" Text="Job Titile" TextColor="{StaticResource PageBackgroundColor}" />
+                <Entry x:Name="txtTitle"/>
+                <Label x:Name="lblSkill" Text="Job Skill" TextColor="{StaticResource PageBackgroundColor}"/>
+                <Entry x:Name="txtSkill"/>
+                <Label x:Name="lblAmount" Text="Job Titile" Style="{StaticResource LabelPageHeadingStyle}"/>
+                <Entry x:Name="txtAmount"/>-->
+
+
+                <!--<local:EditorCtrl Placeholder="Chat" HorizontalOptions="FillAndExpand" HeightRequest="50"/>-->
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
