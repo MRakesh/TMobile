@@ -31,19 +31,14 @@ namespace App2.ViewModels
                 IsBusy = true;
                 //  System.Threading.Thread.Sleep(2500);
                 if (!ValidationHelper.IsFormValid(LoginModel, _page)) { IsBusy = false; return; }
-                var response = await _accountService.GetTokenForLogin(LoginModel);
+                var response = await _accountService.GetTokenForLoginAsync(LoginModel);
                 //if (!string.IsNullOrEmpty(responce))
                 IsBusy = false;
                 if (response.result.Message.ToLower().Contains("bad"))
                     await _page.DisplayAlert("Status", "Wrong Login and Email...", "OK");
                 else
-                {
-                   // await _page.DisplayAlert("Status", response.result.Type, "OK");
-                    if (response.result.Type.ToLower() == "associate")
-                        await Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
-                    if (response.result.Type.ToLower() == "recruiter")
-                        await Shell.Current.GoToAsync(new ShellNavigationState("ContactHome"), true);
-                }
+                 await  NavigatetoHomePage(response);
+
             }
             catch (Exception ex)
             {

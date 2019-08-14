@@ -1,10 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using App2.Models.General;
+using App2.Services;
+using Newtonsoft.Json;
 using Plugin.FileUploader;
 using Plugin.FileUploader.Abstractions;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -74,7 +77,12 @@ namespace App2.Views
                     return stream;
                 });
 
-                await StoreMedia(_mediaFile);
+                string fileEXtension = System.IO.Path.GetExtension(_mediaFile.Path);
+                var fileFormats = UtilityService.GetFileFormats();
+                if (fileFormats.Any(f => f == fileEXtension))
+                    await DisplayAlert("Werning upoadit the file", "Thhe file uploeed jas the worng format.", "Ok");
+                else
+                    await StoreMedia(_mediaFile);
             };
 
             takeVideo.Clicked += async (sender, args) =>
@@ -204,12 +212,8 @@ namespace App2.Views
                 var httpResponseMessage = await httpClient.PostAsync(uploadServiceBaseAddress, content);
 
                 string message = await httpResponseMessage.Content.ReadAsStringAsync();
-                lbl1.Text = message;
-                txtFileName1.Text = message;
-                string[] msgList = message.Replace("{", "").Replace("}", "").Split(',');
-                var filePathItem = JsonConvert.DeserializeObject<FilePathItem>(message);
+                var filePathItem = JsonConvert.DeserializeObject<UploadedFileModelBase>(message);
                 lbl.Text = filePathItem.result;
-                txtFileName2.Text = msgList[0].Split(':')[1];
             }
             catch (Exception ex)
             {

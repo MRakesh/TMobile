@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 using App2.Models;
 using App2.Services;
+using System.Threading.Tasks;
 
 namespace App2.ViewModels
 {
@@ -27,6 +28,14 @@ namespace App2.ViewModels
         {
             get { return title; }
             set { SetProperty(ref title, value); }
+        }
+
+        protected async Task NavigatetoHomePage(AngUserStatusBase response)
+        {
+            if (response.result.Type.ToLower() == "associate")
+                await Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
+            if (response.result.Type.ToLower() == "recruiter")
+                await Shell.Current.GoToAsync(new ShellNavigationState("ContactHome"), true);
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,

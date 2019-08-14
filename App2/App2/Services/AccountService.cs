@@ -1,5 +1,6 @@
 ﻿using Android.Webkit;
 using App2.Models;
+using App2.Models.General;
 using Newtonsoft.Json;
 using Plugin.Media.Abstractions;
 using System;
@@ -49,7 +50,7 @@ namespace App2.Services
                 }
                 return null; //content.ReasonPhrase;
             }
-        }        
+        }
 
         public async Task<string> GetResponseFromAPIAsync(string url)
         {
@@ -69,14 +70,11 @@ namespace App2.Services
 
                     return await content.Content.ReadAsStringAsync();
                 }
-                else
-                {
-                    return content.ReasonPhrase;
-                }
+                return content.ReasonPhrase;
             }
         }
 
-        public async Task<string> PostDataToAPIAsync(Object input)
+        public async Task<string> PostDataToAPIAsync(Object input, string url)
         {
             var baseAddress = new Uri("https://thisishire.com");
 
@@ -87,14 +85,15 @@ namespace App2.Services
 
                 var json = JsonConvert.SerializeObject(input);
                 var userContent = new StringContent(json, Encoding.UTF8, "application/json");
-                var content = await _Client.PostAsync("/api/candidateAccount/candidateregistration", userContent);
-
+                var content = await _Client.PostAsync(url, userContent);
+                content.EnsureSuccessStatusCode();
                 if (content.IsSuccessStatusCode)
                 {
                     return await content.Content.ReadAsStringAsync();
                 }
+                var some = content.ReasonPhrase;
+                return content.ReasonPhrase;
             }
-            return string.Empty;
         }
 
         public async Task<string> PostFileDataToAPIAsync(MediaFile _mediaFile1)
@@ -107,17 +106,17 @@ namespace App2.Services
 
             var httpClient = new HttpClient();
 
-            var uploadServiceBaseAddress = "https://thisishire.com/api/candidate/uplaodfile";
+            var uploadServiceBaseAddress = "https://thisishire.com/api/candidate/uplaodResumefile";
             //"http://localhost:12214/api/Files/Upload";
 
             var httpResponseMessage = await httpClient.PostAsync(uploadServiceBaseAddress, content);
 
             string message = await httpResponseMessage.Content.ReadAsStringAsync();
-            string[] msgList = message.Replace("{", "").Replace("}", "").Split(',');
-            var filePathItem = JsonConvert.DeserializeObject<FilePathItem>(message);
-            // filePathItem.result;
-            //txtFileName2.Text = msgList[0].Split(':')[1];
-            return "";
+            var fileModel = JsonConvert.DeserializeObject<UploadedFileModelBase>(message);
+            string fileName = System.IO.Path.GetFileName(_mediaFile1.Path);
+            Application.Current.Properties["MsGUID"] = fileModel.result;
+            Application.Current.Properties["MsFileName"] = fileName;
+            return fileModel.result;
         }
         public bool IsCoockiExists()
         {

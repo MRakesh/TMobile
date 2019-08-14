@@ -6,10 +6,46 @@
              mc:Ignorable="d"
              x:Class="App2.Views.Account.Register">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="First Name"/>
+                <Entry Text="{Binding Model.FirstName}"/>
+                <Label x:Name="RegisterModel_FirstNameError" IsVisible="False" TextColor="Red" />
+
+                <Label Text="Last Name"/>
+                <Entry Text="{Binding Model.LastName}"/>
+                <Label x:Name="RegisterModel_LastNameError" IsVisible="False" TextColor="Red" />
+
+                <Label Text="Email"/>
+                <Entry Text="{Binding Model.Email}"/>
+                <Label x:Name="RegisterModel_EmailError" IsVisible="False" TextColor="Red" />
+
+                <Label Text="Password" />
+                <Entry IsPassword="true" Text="{Binding Model.Password}"/>
+                <Label x:Name="RegisterModel_PasswordError" IsVisible="False" TextColor="Red" />
+
+                <Label Text="PhoneNo" />
+                <Entry Text="{Binding Model.PhoneNo}"/>
+                <Label x:Name="RegisterModel_PhoneNoError" IsVisible="False" TextColor="Red" />
+
+                <Label Text="Upload Resume" />
+                <!--<Button x:Name="btnResume" Text="Pick Resume"/>-->
+                <Button x:Name="btnFileUploadResume" Text="Upload Resume" Command="{Binding FileUploadCommand}"/>
+
+                <Label Text="" />
+                <Button Text="Register" 
+        Command="{Binding RegisterCommand}" BackgroundColor="LightBlue" />
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <AbsoluteLayout>
+                        <ActivityIndicator x:Name="activity"  
+                       IsRunning="{Binding IsBusy}"  
+                       IsEnabled="{Binding IsBusy}"  
+                       IsVisible="{Binding IsBusy}"  
+                       Color="Blue"  
+                       BackgroundColor="Transparent"/>
+                    </AbsoluteLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -18,7 +18,7 @@ namespace App2.ViewModels
         }
         async Task GetChatsList()
         {
-            string response = await _accountService.GetResponseFromAPI("api/candidate/getAssociateTopicPopUpChats/171");
+            string response = await _accountService.GetResponseFromAPIAsync("api/candidate/getAssociateTopicPopUpChats/171");
             string oldres = string.Empty;
             var model = JsonConvert.DeserializeObject<RecruiterTopicPopUpBaseDto>(response);
             foreach (var item in model.result)
