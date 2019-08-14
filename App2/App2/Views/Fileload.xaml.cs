@@ -191,25 +191,27 @@ namespace App2.Views
 
                 var httpClient = new HttpClient();
 
-                var uploadServiceBaseAddress = "https://thisishire.com/api/homepage/homejobs?skillName=undefined&location=undefined&offset=0";
-                //https://thisishire.com/api/candidate/uplaodfile";
-                //"http://localhost:12214/api/Files/Upload";
+                ////var uploadServiceBaseAddress = "https://thisishire.com/api/homepage/homejobs?skillName=undefined&location=undefined&offset=0";
+                //////https://thisishire.com/api/candidate/uplaodfile";
+                //////"http://localhost:12214/api/Files/Upload";
 
-                var httpResponseMessage = await httpClient.GetStringAsync(uploadServiceBaseAddress);
-                var tr = JsonConvert.DeserializeObject<APIListResponeInfo<Jobs>>(httpResponseMessage);
-                var inst = tr.result.jobs[2];
-                lbl.Text = $"{inst.state} {inst.city} {inst.id}";
-                ////var httpResponseMessage = await httpClient.PostAsync(uploadServiceBaseAddress, content);
+                ////var httpResponseMessage = await httpClient.GetStringAsync(uploadServiceBaseAddress);
+                ////var tr = JsonConvert.DeserializeObject<APIListResponeInfo<Jobs>>(httpResponseMessage);
+                ////var inst = tr.result.jobs[2];
+                ////lbl.Text = $"{inst.state} {inst.city} {inst.id}";
 
-                ////string message = await httpResponseMessage.Content.ReadAsStringAsync();
-                ////lbl1.Text = message;
-                ////txtFileName1.Text = message;
-                ////string[] msgList = message.Replace("{", "").Replace("}", "").Split(',');
-                ////var filePathItem = JsonConvert.DeserializeObject<FilePathItem>(message);
-                ////lbl.Text = filePathItem.result;
-                ////txtFileName2.Text = msgList[0].Split(':')[1];
+                var uploadServiceBaseAddress = "https://thisishire.com/api/candidate/uplaodfile";
+                var httpResponseMessage = await httpClient.PostAsync(uploadServiceBaseAddress, content);
+
+                string message = await httpResponseMessage.Content.ReadAsStringAsync();
+                lbl1.Text = message;
+                txtFileName1.Text = message;
+                string[] msgList = message.Replace("{", "").Replace("}", "").Split(',');
+                var filePathItem = JsonConvert.DeserializeObject<FilePathItem>(message);
+                lbl.Text = filePathItem.result;
+                txtFileName2.Text = msgList[0].Split(':')[1];
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lbl1.Text = ex.Message;
             }
@@ -272,6 +274,6 @@ class APIResponeInfo<T> : BasePath where T : class
 
 public class FilePathItem
 {
-    public string result { get; }    
+    public string result { get; }
 }
 

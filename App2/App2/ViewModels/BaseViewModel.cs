@@ -13,6 +13,7 @@ namespace App2.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public const int PortalId = 1;
 
         bool isBusy = false;
         public bool IsBusy

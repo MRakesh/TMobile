@@ -1,6 +1,7 @@
 ﻿using Android.Webkit;
 using App2.Models;
 using Newtonsoft.Json;
+using Plugin.Media.Abstractions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace App2.Services
         {
 
         }
-        public async Task<AngUserStatusBase> GetTokenForLogin(LoginModel input)
+        public async Task<AngUserStatusBase> GetTokenForLoginAsync(LoginModel input)
         {
             CookieContainer _cookieContainer = new CookieContainer();
             var baseAddress = new Uri("https://thisishire.com");
@@ -48,10 +49,9 @@ namespace App2.Services
                 }
                 return null; //content.ReasonPhrase;
             }
-        }
+        }        
 
-
-        public async Task<string> GetResponseFromAPI(string url)
+        public async Task<string> GetResponseFromAPIAsync(string url)
         {
             string cookiNames = Application.Current.Properties["appCookie"].ToString();
 
@@ -60,22 +60,23 @@ namespace App2.Services
             {
                 var message = new HttpRequestMessage(HttpMethod.Get, url);
                 message.Headers.Add("Cookie", cookiNames);
-                var content1 = await _Client.SendAsync(message);
-                content1.EnsureSuccessStatusCode();
+                var content = await _Client.SendAsync(message);
+                content.EnsureSuccessStatusCode();
 
-                if (content1.IsSuccessStatusCode)
+                if (content.IsSuccessStatusCode)
                 {
+                    //IReadOnlyList<LoginModel>
 
-                    return await content1.Content.ReadAsStringAsync();
+                    return await content.Content.ReadAsStringAsync();
                 }
                 else
                 {
-                    return await content1.Content.ReadAsStringAsync();
+                    return content.ReasonPhrase;
                 }
             }
         }
 
-        public async Task PostDataToAPI(Object input)
+        public async Task<string> PostDataToAPIAsync(Object input)
         {
             var baseAddress = new Uri("https://thisishire.com");
 
@@ -90,12 +91,34 @@ namespace App2.Services
 
                 if (content.IsSuccessStatusCode)
                 {
-                    var response = await content.Content.ReadAsStringAsync();
-                    var model = JsonConvert.DeserializeObject<AngUserStatusBase>(response);
+                    return await content.Content.ReadAsStringAsync();
                 }
             }
+            return string.Empty;
         }
 
+        public async Task<string> PostFileDataToAPIAsync(MediaFile _mediaFile1)
+        {
+            var content = new MultipartFormDataContent();
+
+            content.Add(new StreamContent(_mediaFile1.GetStream()),
+                "\"file\"",
+                $"\"{_mediaFile1.Path}\"");
+
+            var httpClient = new HttpClient();
+
+            var uploadServiceBaseAddress = "https://thisishire.com/api/candidate/uplaodfile";
+            //"http://localhost:12214/api/Files/Upload";
+
+            var httpResponseMessage = await httpClient.PostAsync(uploadServiceBaseAddress, content);
+
+            string message = await httpResponseMessage.Content.ReadAsStringAsync();
+            string[] msgList = message.Replace("{", "").Replace("}", "").Split(',');
+            var filePathItem = JsonConvert.DeserializeObject<FilePathItem>(message);
+            // filePathItem.result;
+            //txtFileName2.Text = msgList[0].Split(':')[1];
+            return "";
+        }
         public bool IsCoockiExists()
         {
             bool contaims = Application.Current.Properties.ContainsKey("appCookie");

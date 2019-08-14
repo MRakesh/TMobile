@@ -1,4 +1,6 @@
 ﻿using App2.Models;
+using Plugin.Media.Abstractions;
+using System;
 using System.Threading.Tasks;
 
 namespace App2.Services
@@ -6,7 +8,9 @@ namespace App2.Services
     public interface IAccountService
     {
         bool IsCoockiExists();
-         Task<AngUserStatusBase> GetTokenForLogin(LoginModel input);
-        Task<string> GetResponseFromAPI(string url);
+         Task<AngUserStatusBase> GetTokenForLoginAsync(LoginModel input);
+        Task<string> GetResponseFromAPIAsync(string url);
+        Task<string> PostDataToAPIAsync(Object input);
+        Task<string> PostFileDataToAPIAsync(MediaFile _mediaFile1);
     }
 }
