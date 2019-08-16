@@ -17,12 +17,16 @@ namespace App2
 
         private void RegisterRoutes()
         {
+
             Routing.RegisterRoute("routerOne", typeof(RouterOne));
             Routing.RegisterRoute("routerTwo", typeof(RouterTwo));
             Routing.RegisterRoute("routerThree", typeof(RouterThree));
             Routing.RegisterRoute("loginview", typeof(LogInPage));
             Routing.RegisterRoute("fileload", typeof(Fileload));
+
+            //Routing for Associates
             Routing.RegisterRoute("AssociateHome", typeof(AssociateHome));
+            //Routing for Recruiters
             Routing.RegisterRoute("ContactHome", typeof(ContactHome));
         }
     }

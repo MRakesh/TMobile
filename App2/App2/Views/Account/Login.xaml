@@ -8,9 +8,10 @@
     <ContentPage.Content>
         <StackLayout Padding="20">
             <Label Text="Login" HorizontalOptions="Center" FontSize="50"/>
-            <Label Text="{Binding Message}" 
-
-        IsVisible="False" TextColor="Red"/>
+            <Entry  x:Name="txtMesage"
+         TextColor="Red"/>
+            <!--<Label  x:Name="lblMesage"
+         TextColor="Red"/>-->
             <Label Text="Username"/>
             <Entry Text="{Binding LoginModel.Username}"/>
             <Label x:Name="LoginModel_UsernameError" IsVisible="False" TextColor="Red" />

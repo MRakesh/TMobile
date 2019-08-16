@@ -12,5 +12,6 @@ namespace App2.Services
         Task<string> GetResponseFromAPIAsync(string url);
         Task<string> PostDataToAPIAsync(Object input, string url);
         Task<string> PostFileDataToAPIAsync(MediaFile _mediaFile1);
+        string GetPrivateCookie();
     }
 }

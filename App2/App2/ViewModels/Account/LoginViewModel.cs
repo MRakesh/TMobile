@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
+
 namespace App2.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
         public IAccountService _accountService => DependencyService.Get<IAccountService>() ?? new AccountService();
+        public string Message { get; set; }   
         public LoginModel LoginModel { get; set; } = new LoginModel();
         public ICommand LoginInCommand { get; }
         private Page _page;
@@ -20,7 +22,9 @@ namespace App2.ViewModels
             _page = page;
             LoginInCommand = new Command(async () => await LoginAsync());
 
-            if (_accountService.IsCoockiExists())
+            string cookie = _accountService.GetPrivateCookie();
+            if(cookie.Length > 0)
+           // if (_accountService.IsCoockiExists())
                 Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
         }
 
@@ -37,7 +41,14 @@ namespace App2.ViewModels
                 if (response.result.Message.ToLower().Contains("bad"))
                     await _page.DisplayAlert("Status", "Wrong Login and Email...", "OK");
                 else
-                 await  NavigatetoHomePage(response);
+                {
+                    //Label lblMessage = (Label)_page.FindByName<("lblMesage");
+                    //Entry txtMesage = _page.FindByName<Entry>("txtMesage");
+                    //txtMesage.Text = response.targetUrl;
+
+                    await _page.DisplayAlert("Status", response.targetUrl, "OK");
+                }
+                //await  NavigatetoHomePage(response);
 
             }
             catch (Exception ex)

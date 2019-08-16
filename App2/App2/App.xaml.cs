@@ -15,8 +15,12 @@ namespace App2
 //#if DEBUG
 //            HotReloader.Current.Run(this);
 //#endif
+
+            //services registrations
             DependencyService.Register<MockDataStore>();
             DependencyService.Register<AccountService>();
+
+            
             MainPage = new AppShell();
         }
 

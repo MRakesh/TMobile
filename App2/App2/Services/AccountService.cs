@@ -45,6 +45,7 @@ namespace App2.Services
 
                     string cookieName = CopyCookies(content, baseAddress, _cookieContainer);
                     Application.Current.Properties["appCookie"] = cookieName;
+                    model.targetUrl = cookieName;
                     return model;
                     //return "Login successful....";
                 }
@@ -54,7 +55,7 @@ namespace App2.Services
 
         public async Task<string> GetResponseFromAPIAsync(string url)
         {
-            string cookiNames = Application.Current.Properties["appCookie"].ToString();
+            string cookiNames = GetPrivateCookie(); //Application.Current.Properties["appCookie"].ToString();
 
             var baseAddress = new Uri("https://thisishire.com");
             using (var _Client = new HttpClient(new HttpClientHandler() { UseCookies = false }) { BaseAddress = baseAddress })
@@ -120,9 +121,7 @@ namespace App2.Services
         }
         public bool IsCoockiExists()
         {
-            bool contaims = Application.Current.Properties.ContainsKey("appCookie");
-            return contaims;
-            //return !string.IsNullOrEmpty(Application.Current.Properties["appCookie"].ToString()) ? true : false;
+           return Application.Current.Properties.ContainsKey("appCookie");
         }
 
         private string CopyCookies(HttpResponseMessage result, Uri uri, CookieContainer _cookieContainer)
@@ -170,6 +169,12 @@ namespace App2.Services
                 }
             }
             return cookies;
+        }
+
+
+        public string GetPrivateCookie()
+        {
+            return "CfDJ8DybItBGHEFJigr0ediXm63X9bIIztxy9ju7qOLbsjYkWTHNZCLYEtIek2s4GkX2KQqzUKSCjU8HqsJX0L9kCm_j9p9NZ4atKcX89gM02ZnjnKGNH94wW7CEkRTuDt0rElzHLYLzafVSxaBUiw6cdYBs6endVt17XYWjg_zLMsT8f49zxDDkOd9mG1rRC50Lqon8C9iUAlwC5JHefOqvm7VHRYHCf2JBnkgH3bXmdj_2gJE8LAgrYdnMOzQkXUlbp_m1RNqAeL91YUltPemxHYkghhldqM65HFgIMXKs0isObmG4Z8kEmUDAmxjMrUYr9wlgosUjmNBGwVfuWUyM_akAega3_6pg6BBsF2Sifzxv1XgKFhhHpYnXTFtSvZqPyvDJFsciv6dFRjmLWWqx3nKiFXXUgmhsHM0ai9SAJX2zF3mmFw5v6RjgGTW3jZ8A8D9H5aVf7H5Es760ytw3gIyRDvdcBx7d86RlFUfrHLJ9RYTO877fTrb-_x_UfZ-fnvGsyhH9jO6fh7JkL8fB4qkc-tUtuLieHTqZ3BuDvSyoKDDN7JYj6Kf_HbT_W-GgumSqA7l-iFUA8wyvxASivbToFl9Fv1T3MCUxUt4sEeUOsfYu-a9ic6nhKXcaQSd5JW56FebHN7J70MwLtJ1xKJdVvl-TjuNezWQokqtlN0ned79PabqbSbrF6X43avhdkIiGmus_C8gDFaSx4G9EjyLzuZMYGlbnwU6hoRyW1PjW7ZkmqdeFj33n1_79OHHuA86p3SooVoja3SXqQ3bVx9LDLKabfLQFwl5OKEh_ziYrdLhei5ie8WNa2eTcmoXwlfScX9kbnOLAf0kXUpb8yaHRbOABMBWG1GzU7Iz-oN9l3mrufv7bHyiwOXOItdzzoJcildKy_N0sGnS_rJf6xJ7fMvYXi29jTAIifEbslEGCjxJ1jJsQDqcFNUDRp3yEm3nG50VroI10g4OsjUxaC_U2czJIhmBXxZVcz1pdNfPJxa8J6BbHHBwXfSZS57iRus28wTK9UQ8jgsEjnxS9SRMxU9feWz39_wgZ0IpuN_D9tThp6vAFKcZdcNlKvf9A3Ss7PbGSqVC3vVxhQOAPXheqBwOPnvxVV-ZwbqTCbbZno454RjeWBdfnEboQFh20YV07uZ2FEjzWSo1PqcTpT-K1QJITQkequy3lRgjgqXKjy2xELdbE7L23QfvQ3jLjoCgRq4CnIpn5s908uQfSXeXBE4z5fDkz3DO8a025ggFIioO7vVd74vKF80liOcg11M01r-47Te_j3jNa0iuOGElXb639WkPNIuxOPsMBjnuARDH-oZ48Dt__tgVnS42CUZpm0OOBpJ27zA-cC8nXkZ9ndlJyfPy7v_vW871D164SBjwuNF7NRSv50QnnDE3xaNDCLOgllTDYRxXCo_uyLiZMCdWOP2QQMY4bZDggz1nBrzy4MkDllMr7urSkdgDEOX_U7y6asgaiyiIwEGlf27I46VZz5r_Smb9DKonUJKdz3re6xKAsG9TVlER5B6m1_rkwWb6WseyIHmjrNm322hQdau5j1OU7TlhuvV-sQ6LQJEElkAeNkoJ_vHjtpx6ACKKuZNS5ihJaU_p3ZqLgyfk";
         }
 
     }
