@@ -8,6 +8,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Button  Text="Get chats for the Recruiter" Command="{Binding GetChatsListCommand}"></Button>
+            <Entry  x:Name="txtMesage"
+         TextColor="Red"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

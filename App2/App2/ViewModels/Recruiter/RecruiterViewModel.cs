@@ -19,14 +19,19 @@ namespace App2.ViewModels
         async Task GetChatsList()
         {
             string response = await _accountService.GetResponseFromAPIAsync("api/recruiter/getRecruiterTopicPopUpChats/194");
-            string oldres = string.Empty;
-            var model = JsonConvert.DeserializeObject<RecruiterTopicPopUpBaseDto>(response);
-            foreach (var item in model.result)
-            {
-                if (item != null)
-                    oldres += item.Message;
-            }
-            await _page.DisplayAlert("Status", oldres, "OK");
+            Entry txtMesage = _page.FindByName<Entry>("txtMesage");
+            txtMesage.Text = response;
+            await _page.DisplayAlert("Status", response, "OK");
+            //string oldres = string.Empty;
+            //var model = JsonConvert.DeserializeObject<RecruiterTopicPopUpBaseDto>(response);
+            //foreach (var item in model.result)
+            //{
+            //    if (item != null)
+            //        oldres += item.Message;
+            //}
+            //await _page.DisplayAlert("Status", oldres, "OK");
+
+
         }
         public ICommand GetChatsListCommand { get; }
     }

@@ -11,7 +11,7 @@ namespace App2.Views.General
         public ContactEssentials()
         {
             InitializeComponent();
-            BindingContext = new ContactViewModel();
+            BindingContext = new ContactViewModel(this);
         }
     }
 }

@@ -2,6 +2,7 @@
 using App2.Models;
 using App2.Services;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -12,7 +13,7 @@ namespace App2.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         public IAccountService _accountService => DependencyService.Get<IAccountService>() ?? new AccountService();
-        public string Message { get; set; }   
+        public string Message { get; set; }
         public LoginModel LoginModel { get; set; } = new LoginModel();
         public ICommand LoginInCommand { get; }
         private Page _page;
@@ -22,10 +23,10 @@ namespace App2.ViewModels
             _page = page;
             LoginInCommand = new Command(async () => await LoginAsync());
 
-           // string cookie = _accountService.GetPrivateCookie();
-           // if(cookie.Length > 0)
-           //// if (_accountService.IsCoockiExists())
-           //     Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
+            // string cookie = _accountService.GetPrivateCookie();
+            // if(cookie.Length > 0)
+            //// if (_accountService.IsCoockiExists())
+            //     Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
         }
 
         private async Task LoginAsync()
@@ -42,19 +43,35 @@ namespace App2.ViewModels
                     await _page.DisplayAlert("Status", "Wrong Login and Email...", "OK");
                 else
                 {
+
                     //Label lblMessage = (Label)_page.FindByName<("lblMesage");
                     //Entry txtMesage = _page.FindByName<Entry>("txtMesage");
                     //txtMesage.Text = response.targetUrl;
 
-                    await _page.DisplayAlert("Status", response.targetUrl, "OK");
+                    //string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                    //string filename = Path.Combine(path, "coockiefile.txt");
+
+                    //using (var streamWriter = new StreamWriter(filename, true))
+                    //{
+                    //    streamWriter.WriteLine(response.targetUrl);
+                    //}                    
+
+                    //string pathForTheFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DateTime.UtcNow.ToString() +"_" + "coockiefile.txt");
+                    //File.WriteAllText(pathForTheFile, response.targetUrl);
+                    Entry txtMesage = _page.FindByName<Entry>("txtMesage");
+                    txtMesage.Text = response.targetUrl;
+
+
+
+                    //  await _page.DisplayAlert("Status", response.targetUrl, "OK");
+                    await NavigatetoHomePage(response);
                 }
-                //await  NavigatetoHomePage(response);
 
             }
             catch (Exception ex)
             {
-                //await _page.DisplayAlert("Status", ex.Message + " " + ex.StackTrace, "OK");
-                await _page.DisplayAlert("Status", "Wrong Login and Email...", "OK");
+                await _page.DisplayAlert("Excvepton Status", ex.Message + " " + ex.StackTrace, "OK");
+                //await _page.DisplayAlert("Status", "Wrong Login and Email...", "OK");
             }
         }
     }

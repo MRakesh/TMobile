@@ -9,6 +9,7 @@ namespace App2.Services
     {
         bool IsCoockiExists();
          Task<AngUserStatusBase> GetTokenForLoginAsync(LoginModel input);
+        Task<string> GetCustomResponseFromAPIAsync(string url);
         Task<string> GetResponseFromAPIAsync(string url);
         Task<string> PostDataToAPIAsync(Object input, string url);
         Task<string> PostFileDataToAPIAsync(MediaFile _mediaFile1);

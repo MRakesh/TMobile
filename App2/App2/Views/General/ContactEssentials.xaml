@@ -6,7 +6,10 @@
              mc:Ignorable="d"
              x:Class="App2.Views.General.ContactEssentials">
     <ContentPage.Content>
-        <StackLayout Padding="24,48,24,24" >
+        <StackLayout>
+            <Button  Text="Get chats for the Recruiter" Command="{Binding GetChatsListCommand}"></Button>
+        </StackLayout>
+        <!--<StackLayout Padding="24,48,24,24" >
             <Frame HasShadow="False"
                    HorizontalOptions="Center"
                    Padding="0"
@@ -26,7 +29,7 @@
                     <ColumnDefinition Width="44"/>
                 </Grid.ColumnDefinitions>
 
-                <!--Phone & SMS-->
+                --><!--Phone & SMS--><!--
                 <ImageButton Source="phone.png" Grid.Row="0" VerticalOptions="Center"
                          Command="{Binding PhoneCommand}" BackgroundColor="Transparent" d:BackgroundColor=""/>
                 <Label Grid.Column="1" Grid.Row="0"
@@ -35,7 +38,7 @@
                 <ImageButton Source="sms.png" Grid.Row="0" Grid.Column="2" VerticalOptions="Center"
                          Command="{Binding SmsCommand}" BackgroundColor="Transparent" d:BackgroundColor=""/>
 
-                <!--Email-->
+                --><!--Email--><!--
                 <ImageButton Source="email.png" Grid.Row="1"  VerticalOptions="Center"
                          Command="{Binding EmailCommand}" BackgroundColor="Transparent" d:BackgroundColor=""/>
 
@@ -43,7 +46,7 @@
                    VerticalOptions="Center"
                    Text="{Binding Contact.Email}"/>
 
-                <!--Address-->
+                --><!--Address--><!--
                 <ImageButton Source="navigate.png" Grid.Row="2" VerticalOptions="Center"
                          Command="{Binding NavigateCommand}" BackgroundColor="Transparent" d:BackgroundColor=""/>
 
@@ -63,6 +66,6 @@
                 </StackLayout>
 
             </Grid>
-        </StackLayout>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>
