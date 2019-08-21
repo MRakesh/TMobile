@@ -1,6 +1,5 @@
 ﻿using Android.Webkit;
 using App2.Models;
-using App2.Models.General;
 using Newtonsoft.Json;
 using Plugin.Media.Abstractions;
 using System;

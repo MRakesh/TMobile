@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App2.Models.General
+namespace App2.Models
 {
     public class UploadedFileModelBase : BaseAPIResponseModel
     {

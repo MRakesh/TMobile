@@ -22,10 +22,10 @@ namespace App2.ViewModels
             _page = page;
             LoginInCommand = new Command(async () => await LoginAsync());
 
-            string cookie = _accountService.GetPrivateCookie();
-            if(cookie.Length > 0)
-           // if (_accountService.IsCoockiExists())
-                Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
+           // string cookie = _accountService.GetPrivateCookie();
+           // if(cookie.Length > 0)
+           //// if (_accountService.IsCoockiExists())
+           //     Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
         }
 
         private async Task LoginAsync()

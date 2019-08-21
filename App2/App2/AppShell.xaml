@@ -4,7 +4,8 @@
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:local="clr-namespace:App2.Views"
-       xmlns:local2="clr-namespace:App2.Views.Account"
+       xmlns:local2="clr-namespace:App2.Views.Account"               
+       xmlns:general="clr-namespace:App2.Views.General"  
        mc:Ignorable="d"
        Title="App2" Visual="Material"
        x:Class="App2.AppShell">
@@ -66,6 +67,16 @@
             </ShellContent>
         </Tab>
     </FlyoutItem>
+    
+    <FlyoutItem Title="Contact Essentilas"
+                Icon="tab_feed.png">
+        <Tab>
+            <ShellContent>
+                <general:ContactEssentials/>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    
     
     <!--<FlyoutItem Title="Upload File"
                 Icon="tab_feed.png">

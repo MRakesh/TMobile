@@ -1,4 +1,4 @@
-﻿using App2.Models.General;
+﻿using App2.Models;
 using App2.Services;
 using Newtonsoft.Json;
 using Plugin.FileUploader;

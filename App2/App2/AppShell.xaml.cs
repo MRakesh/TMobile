@@ -1,6 +1,5 @@
 ﻿using App2.Views;
 using App2.Views.Associate;
-using App2.Views.Contact;
 using App2.Views.Routes;
 
 using Xamarin.Forms;
@@ -27,7 +26,7 @@ namespace App2
             //Routing for Associates
             Routing.RegisterRoute("AssociateHome", typeof(AssociateHome));
             //Routing for Recruiters
-            Routing.RegisterRoute("ContactHome", typeof(ContactHome));
+            Routing.RegisterRoute("ContactHome", typeof(Views.Contact.ContactHome));
         }
     }
 }
