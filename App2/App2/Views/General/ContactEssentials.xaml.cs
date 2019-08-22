@@ -9,10 +9,10 @@ namespace App2.Views.General
     [QueryProperty("ParamOne", "param1")]
     public partial class ContactEssentials : ContentPage
     {
-        private string paramOne;
         public ContactEssentials()
         {
             InitializeComponent();
+            BindingContext = new ContactViewModel(this);
         }
 
         public string ParamOne
@@ -22,10 +22,6 @@ namespace App2.Views.General
                 if (!string.IsNullOrEmpty(value))
                 {
                     BindingContext = new ContactViewModel(this, value);
-                }
-                else
-                {
-                    BindingContext = new ContactViewModel(this);
                 }
             }
         }
