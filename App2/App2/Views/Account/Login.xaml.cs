@@ -18,6 +18,11 @@ namespace App2.Views.Account
             InitializeComponent();
             this.BindingContext = new LoginViewModel(this);
         }
+
+        private async void BtnContavtNavigate_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("contactessential?param1=05");
+        }
     }
 }
 

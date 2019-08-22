@@ -29,27 +29,7 @@
     <Shell.FlyoutHeader>
         <local:FlypoutContentHeader/>
     </Shell.FlyoutHeader>
-
-    <!--<Shell.MenuItems>
-        <MenuItem Command="{Binding ProductTypeCommand}"
-                  CommandParameter="1"
-                  Text="Item 1" />
-        <MenuItem Command="{Binding ProductTypeCommand}"
-                  CommandParameter="2"
-                  Text="Item 2" />
-    </Shell.MenuItems>-->
-
-    <!--<views:postjob IconImageSource="cat.png" />
-    <views:postjob IconImageSource="dog.png" />-->
-
-    <!--<FlyoutItem Title="Cats"
-                Icon="tab_feed.png">
-        <Tab>
-            <ShellContent>
-                <views:postjob />
-            </ShellContent>
-        </Tab>
-    </FlyoutItem>-->
+    
     <FlyoutItem Title="Login"
                 Icon="tab_feed.png">
         <Tab>
@@ -76,6 +56,27 @@
             </ShellContent>
         </Tab>
     </FlyoutItem>
+
+    <!--<Shell.MenuItems>
+        <MenuItem Command="{Binding ProductTypeCommand}"
+                  CommandParameter="1"
+                  Text="Item 1" />
+        <MenuItem Command="{Binding ProductTypeCommand}"
+                  CommandParameter="2"
+                  Text="Item 2" />
+    </Shell.MenuItems>-->
+
+    <!--<views:postjob IconImageSource="cat.png" />
+    <views:postjob IconImageSource="dog.png" />-->
+
+    <!--<FlyoutItem Title="Cats"
+                Icon="tab_feed.png">
+        <Tab>
+            <ShellContent>
+                <views:postjob />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>-->
     
     
     <!--<FlyoutItem Title="Upload File"

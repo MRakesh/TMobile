@@ -29,6 +29,7 @@
             </StackLayout>
             <Button Text="Login" 
         Command="{Binding LoginInCommand}" BackgroundColor="LightBlue" />
+            <Button Text="NavigatetoContactPage" x:Name="btnContavtNavigate" Clicked="BtnContavtNavigate_Clicked"></Button>
 
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <AbsoluteLayout>

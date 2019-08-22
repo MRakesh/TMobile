@@ -25,8 +25,8 @@ namespace App2.ViewModels
             RegisterCommand = new Command(async () => await RegisterAsync());
             FileUploadCommand = new Command(async () => await FileUploadAsync());
 
-            if (_accountService.IsCoockiExists())
-                Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
+            //if (_accountService.IsCoockiExists())
+            //    Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
         }
 
         private async Task FileUploadAsync()

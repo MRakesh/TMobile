@@ -13,17 +13,42 @@ using System.Windows.Input;
 
 namespace App2.ViewModels
 {
-    public class ContactViewModel
+    public class ContactViewModel: BaseViewModel
     {
         private Page _page;
         public ICommand GetChatsListCommand { get; }
+        //public ICommand TextChangedCommand { get; }
         public IAccountService _accountService => DependencyService.Get<IAccountService>() ?? new AccountService();
-        public ContactViewModel(Page page)
+        public ContactViewModel(Page page, string queryparam1= null, string queryParam2 = null)
         {
             _page = page;
             GetChatsListCommand = new Command(async () => await GetChatsList());
+            //TextChangedCommand = new Command(TextChangedList());
+            if (!string.IsNullOrEmpty(queryparam1))
+                Age = queryparam1;
         }
 
+        private string age_;
+        public string Age { get { return age_; } set { if (age_ != value) { age_ = ProcessAge(value); OnPropertyChanged(); } } }
+
+        private string ProcessAge(string age)
+        {
+            if (string.IsNullOrEmpty(age))
+                return age;
+
+            if (age.Length > 3)
+                age = age.Substring(0, 3);
+
+            if (age.StartsWith("0"))
+                age = age.Remove(0, 1);
+
+            return age.Replace(".", "").Replace("-", "");
+        }
+
+        //void TextChangedList()
+        //{
+        //    _page.DisplayAlert("Error Status",  ,"OK");
+        //}
         async Task GetChatsList()
         {
             try

@@ -8,6 +8,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Button  Text="Get chats for the Recruiter" Command="{Binding GetChatsListCommand}"></Button>
+            <Label Text="{Binding Age}"></Label>
+            <Entry Text="{Binding Age, Mode=TwoWay}"/>
         </StackLayout>
         <!--<StackLayout Padding="24,48,24,24" >
             <Frame HasShadow="False"
