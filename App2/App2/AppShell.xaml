@@ -4,8 +4,9 @@
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:local="clr-namespace:App2.Views"
-       xmlns:local2="clr-namespace:App2.Views.Account"               
-       xmlns:general="clr-namespace:App2.Views.General"  
+       xmlns:account="clr-namespace:App2.Views.Account"               
+       xmlns:general="clr-namespace:App2.Views.General"
+       xmlns:associate="clr-namespace:App2.Views.Associate"
        mc:Ignorable="d"
        Title="App2" Visual="Material"
        x:Class="App2.AppShell">
@@ -29,12 +30,12 @@
     <Shell.FlyoutHeader>
         <local:FlypoutContentHeader/>
     </Shell.FlyoutHeader>
-    
+
     <FlyoutItem Title="Login"
                 Icon="tab_feed.png">
         <Tab>
             <ShellContent>
-                <local2:Login />
+                <account:Login />
             </ShellContent>
         </Tab>
     </FlyoutItem>
@@ -43,16 +44,24 @@
                 Icon="tab_feed.png">
         <Tab>
             <ShellContent>
-                <local2:Register />
+                <account:Register />
             </ShellContent>
         </Tab>
     </FlyoutItem>
-    
+
     <FlyoutItem Title="Contact Essentilas"
                 Icon="tab_feed.png">
         <Tab>
             <ShellContent>
                 <general:ContactEssentials/>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Associate ProfilInfo"
+                Icon="tab_feed.png">
+        <Tab>
+            <ShellContent>
+                <associate:AssociateProfileInfo/>
             </ShellContent>
         </Tab>
     </FlyoutItem>
@@ -77,8 +86,8 @@
             </ShellContent>
         </Tab>
     </FlyoutItem>-->
-    
-    
+
+
     <!--<FlyoutItem Title="Upload File"
                 Icon="tab_feed.png">
         <Tab>
@@ -87,7 +96,7 @@
             </ShellContent>
         </Tab>
     </FlyoutItem>-->
-    
+
     <!--<FlyoutItem Title="Login Page"
                 Icon="tab_feed.png">
         <Tab Title="About"    

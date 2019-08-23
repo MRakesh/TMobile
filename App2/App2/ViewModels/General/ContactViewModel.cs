@@ -10,6 +10,7 @@ using App2.Models;
 using Xamarin.Essentials;
 using App2.Services;
 using System.Windows.Input;
+using App2.Dtos;
 
 namespace App2.ViewModels
 {
@@ -26,13 +27,34 @@ namespace App2.ViewModels
             //TextChangedCommand = new Command(TextChangedList());
             if (!string.IsNullOrEmpty(queryparam1))
                 Age = queryparam1;
+
+
+            this.ProfileInfo = new AssociateViewProfileDto() { Email = "ori"};
         }
+
+
+        private AssociateViewProfileDto profileInfo;
+        public AssociateViewProfileDto ProfileInfo
+        {
+            get { return profileInfo; }
+            set
+            {
+                profileInfo = value;
+                //SetProperty(ref profileInfo, value);
+                OnPropertyChanged("ProfileInfo.Email");                
+            }
+        }
+
+        private string email;
+        public string Email { get { return email; } set { if (email != value) { email = value; OnPropertyChanged(); } } }
+
 
         private string age_;
         public string Age { get { return age_; } set { if (age_ != value) { age_ = ProcessAge(value); OnPropertyChanged(); } } }
 
         private string ProcessAge(string age)
         {
+            Email = "Sopme nte Emai";
             if (string.IsNullOrEmpty(age))
                 return age;
 

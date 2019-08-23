@@ -8,6 +8,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Button  Text="Get chats for the Recruiter" Command="{Binding GetChatsListCommand}"></Button>
+            <Label Text="{Binding Email}"></Label>
             <Label Text="{Binding Age}"></Label>
             <Entry Text="{Binding Age, Mode=TwoWay}"/>
         </StackLayout>

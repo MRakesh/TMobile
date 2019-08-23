@@ -1,6 +1,4 @@
-﻿using App2.Models;
-using App2.Services;
-using Newtonsoft.Json;
+﻿using App2.Services;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;

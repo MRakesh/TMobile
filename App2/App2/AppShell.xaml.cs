@@ -25,8 +25,11 @@ namespace App2
             Routing.RegisterRoute("fileload", typeof(Fileload));
             Routing.RegisterRoute("contactessential", typeof(ContactEssentials));
 
+
             //Routing for Associates
             Routing.RegisterRoute("AssociateHome", typeof(AssociateHome));
+            Routing.RegisterRoute("AssociateProfileInfo", typeof(AssociateProfileInfo));
+
             //Routing for Recruiters
             Routing.RegisterRoute("ContactHome", typeof(Views.Contact.ContactHome));
         }

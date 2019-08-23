@@ -64,7 +64,9 @@ namespace App2.ViewModels
 
 
                     //  await _page.DisplayAlert("Status", response.targetUrl, "OK");
-                    await NavigatetoHomePage(response);
+
+
+                  //  await NavigatetoHomePage(response);
                 }
 
             }
