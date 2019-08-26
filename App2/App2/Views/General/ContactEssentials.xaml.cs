@@ -15,6 +15,12 @@ namespace App2.Views.General
             BindingContext = new ContactViewModel(this);
         }
 
+
+        //protected override async void OnAppearing()
+        //{
+        //    await new ContactViewModel(this).GetChatsList();
+        //}
+
         public string ParamOne
         {
             set

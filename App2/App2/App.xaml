@@ -6,9 +6,39 @@
              mc:Ignorable="d"
              x:Class="App2.App">
     <Application.Resources>
+        
         <Color x:Key="PageBackgroundColor">Yellow</Color>
         <Color x:Key="HeadingTextColor">Red</Color>
         <Color x:Key="NormalTextColor">Blue</Color>
+        <Color x:Key="lblStaticTextColor">Black</Color>
+        <Color x:Key="lblDynamicTextColor">Maroon</Color>
+        <Color x:Key="lblHeaderTextColor">Green</Color>
+
+        <Style x:Key="lblStaticTopHeaderDisplay" TargetType="Label">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="{StaticResource lblHeaderTextColor}" />
+        </Style>
+        
+         <Style x:Key="boxViewStaticTopHeaderDisplay" TargetType="BoxView">
+            <Setter Property="BackgroundColor" Value="#545454" />
+            <Setter Property="HeightRequest" Value=".3" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        </Style>
+        
+        <Style x:Key="lblStaticDisplay" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Italic" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="{StaticResource lblStaticTextColor}" />
+        </Style>
+        
+        <Style x:Key="lblDynamicDisplay" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Italic" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="{StaticResource lblDynamicTextColor}" />
+        </Style>
+        
         <Style x:Key="LabelPageHeadingStyle" TargetType="Label">
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="HorizontalOptions" Value="Center" />

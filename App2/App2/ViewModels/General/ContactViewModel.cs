@@ -28,8 +28,9 @@ namespace App2.ViewModels
             if (!string.IsNullOrEmpty(queryparam1))
                 Age = queryparam1;
 
+            Task.Run(() => GetChatsList());
 
-            this.ProfileInfo = new AssociateViewProfileDto() { Email = "ori"};
+           // this.ProfileInfo = new AssociateViewProfileDto() { Email = "32323" };
         }
 
 
@@ -40,8 +41,7 @@ namespace App2.ViewModels
             set
             {
                 profileInfo = value;
-                //SetProperty(ref profileInfo, value);
-                OnPropertyChanged("ProfileInfo.Email");                
+                OnPropertyChanged();                        
             }
         }
 
@@ -71,11 +71,16 @@ namespace App2.ViewModels
         //{
         //    _page.DisplayAlert("Error Status",  ,"OK");
         //}
-        async Task GetChatsList()
+        public async Task GetChatsList()
         {
             try
             {
-                string response = await _accountService.GetCustomResponseFromAPIAsync("api/recruiter/getRecruiterTopicPopUpChats/194");
+                string response = await _accountService.GetCustomResponseFromAPIAsync("api/candidate/getAssociateTopicPopUpChats/222");
+                this.ProfileInfo = new AssociateViewProfileDto { Email = response };
+
+                //Label txtMesage = _page.FindByName<Label>("lblError");
+                //txtMesage.Text = "some error on the code";
+
                 await _page.DisplayAlert("Status", response, "OK");
             }
             catch (Exception ex)

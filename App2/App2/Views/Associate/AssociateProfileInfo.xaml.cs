@@ -16,21 +16,18 @@ namespace App2.Views.Associate
         public AssociateProfileInfo()
         {
             InitializeComponent();
-            BindingContext = GetViewModel();
+            BindingContext = new AssociateProfileInfoViewModel(this);
         }
 
-        protected override async void OnAppearing()
-        {
-            await GetViewModel().FillProfileInfo();
-        }
+        //protected override async void OnAppearing()
+        //{
+        //    await GetViewModel().FillProfileInfo();
+        //}
 
-        protected override async void OnBindingContextChanged()
-        {
-            await GetViewModel().FillProfileInfo();
-        }
-        AssociateProfileInfoViewModel GetViewModel()
-        {
-            return new AssociateProfileInfoViewModel(this);
-        }
+      
+        //AssociateProfileInfoViewModel GetViewModel()
+        //{
+        //    return new AssociateProfileInfoViewModel(this);
+        //}
     }
 }

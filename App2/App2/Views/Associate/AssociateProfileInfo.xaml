@@ -3,15 +3,98 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:App2.Converters"
              mc:Ignorable="d"
              x:Class="App2.Views.Associate.AssociateProfileInfo">
+
+    <ContentPage.Resources>
+        <local:ArrayOfStringConverter x:Key="ArrayOfStringConverter"/>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="lblMessage"></Label>
-            <Label Text="{Binding Email}"></Label>
-            <Entry Text="{Binding Email}"/>
-            <Entry Text="{Binding ProfileInfo.Email}"/>
-            <Button Text="setData" Command="{Binding SetCommand}"/>
+            <StackLayout>
+                <Label Text="Associate Profile Informatoin" Style="{StaticResource lblStaticTopHeaderDisplay}"/>
+                <BoxView Style="{StaticResource boxViewStaticTopHeaderDisplay}"/>
+            </StackLayout>
+
+            <ActivityIndicator x:Name="activity"  HorizontalOptions="Center" 
+                       IsRunning="{Binding IsBusy}"  
+                       IsEnabled="{Binding IsBusy}"  
+                       IsVisible="{Binding IsBusy}"  
+                       Color="Blue"  
+                       BackgroundColor="Transparent"/>
+            <Frame IsVisible="{Binding !IsBusy}">
+                <Grid Padding="5,0,50,0" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="6*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="Name:" Grid.Row="0" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="Email:" Grid.Row="1" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="Phone:" Grid.Row="2" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="Country:" Grid.Row="3" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="Address1:" Grid.Row="4" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="Address2:" Grid.Row="5" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="City:" Grid.Row="6" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="State:" Grid.Row="7" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="Postal:" Grid.Row="8" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="GeoArea:" Grid.Row="9" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="OptStDate:" Grid.Row="10" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="OptEndDate:" Grid.Row="11" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="WorkAuthorization:" Grid.Row="12" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="IsRelocate:" Grid.Row="13" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="Availability:" Grid.Row="14" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="AnnualSalary:" Grid.Row="15" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="DesiredPosition:" Grid.Row="16" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="Experience:" Grid.Row="17" Grid.Column="0"/>
+                    <Label Style="{StaticResource lblStaticDisplay}" Text="ContractType:" Grid.Row="18" Grid.Column="0"/>
+
+
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Text="{Binding ProfileInfo.Name}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1" Text="{Binding ProfileInfo.Email}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Text="{Binding ProfileInfo.Phone}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1" Text="{Binding ProfileInfo.Country}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1" Text="{Binding ProfileInfo.Address1}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="5" Grid.Column="1" Text="{Binding ProfileInfo.Address2}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="6" Grid.Column="1" Text="{Binding ProfileInfo.City}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="7" Grid.Column="1" Text="{Binding ProfileInfo.State}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="8" Grid.Column="1" Text="{Binding ProfileInfo.Postal}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="9" Grid.Column="1" Text="{Binding ProfileInfo.GeoArea}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="10" Grid.Column="1" 
+                   Text="{Binding ProfileInfo.OptStDate, StringFormat='{0:MM/dd/yyyy}'}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="11" Grid.Column="1" 
+                   Text="{Binding ProfileInfo.OptEndDate, StringFormat='{0:MM/dd/yyyy}'}"/>
+                    <Label Text="{Binding ProfileInfo.Auths, Converter={StaticResource ArrayOfStringConverter}}" Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="12" Grid.Column="1"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="13" Grid.Column="1" Text="{Binding ProfileInfo.IsRelocate}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="14" Grid.Column="1" Text="{Binding ProfileInfo.Availability}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="15" Grid.Column="1" Text="{Binding ProfileInfo.AnnualSalary}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="16" Grid.Column="1" Text="{Binding ProfileInfo.DesiredPosition}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="17" Grid.Column="1" Text="{Binding ProfileInfo.Experience}"/>
+                    <Label Style="{StaticResource lblDynamicDisplay}" HorizontalOptions="FillAndExpand" Grid.Row="18" Grid.Column="1" Text="{Binding ProfileInfo.ContractType}"/>
+                </Grid>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

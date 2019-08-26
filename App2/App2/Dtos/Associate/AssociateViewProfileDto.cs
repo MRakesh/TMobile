@@ -28,7 +28,6 @@ namespace App2.Dtos
         public string Experience { get; set; }
         public string ContractType { get; set; }
     }
-
     public class AssociateViewProfileDtoBase : BaseAPIResponseModel
     {
         public AssociateViewProfileDto result { get; set; }
