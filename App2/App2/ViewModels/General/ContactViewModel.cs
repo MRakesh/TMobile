@@ -75,7 +75,7 @@ namespace App2.ViewModels
         {
             try
             {
-                string response = await _accountService.GetCustomResponseFromAPIAsync("api/candidate/getAssociateTopicPopUpChats/222");
+                string response = await _accountService.GetResponseFromAPIAsync("api/candidate/getAssociateTopicPopUpChats/222");
                 this.ProfileInfo = new AssociateViewProfileDto { Email = response };
 
                 //Label txtMesage = _page.FindByName<Label>("lblError");

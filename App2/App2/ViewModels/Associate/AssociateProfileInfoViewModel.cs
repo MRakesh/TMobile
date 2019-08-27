@@ -45,7 +45,7 @@ namespace App2.ViewModels
         {
             try
             {
-                string response = await _accountService.GetCustomResponseFromAPIAsync("api/candidate/getAssociateViewProfile/14");
+                string response = await _accountService.GetResponseFromAPIAsync("api/candidate/getAssociateViewProfile/14");
 
                 var model = JsonConvert.DeserializeObject<AssociateViewProfileDtoBase>(response);
                 ProfileInfo = model.result;

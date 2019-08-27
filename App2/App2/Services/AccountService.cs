@@ -58,31 +58,7 @@ namespace App2.Services
 
         public async Task<string> GetResponseFromAPIAsync(string url)
         {
-            string cookiNames = Application.Current.Properties["appCookie"].ToString();// GetPrivateCookie(); //
-
-            var baseAddress = new Uri("https://thisishire.com");
-            using (var _Client = new HttpClient(new HttpClientHandler() { UseCookies = false }) { BaseAddress = baseAddress })
-            {
-                var message = new HttpRequestMessage(HttpMethod.Get, url);
-                message.Headers.Add("Cookie", cookiNames);
-                var content = await _Client.SendAsync(message);
-                content.EnsureSuccessStatusCode();
-
-                if (content.IsSuccessStatusCode)
-                {
-                    //IReadOnlyList<LoginModel>
-
-                    return cookiNames;
-                    //    return await content.Content.ReadAsStringAsync();
-                }
-                return content.ReasonPhrase;
-            }
-        }
-
-        public async Task<string> GetCustomResponseFromAPIAsync(string url)
-        {
-
-            string cookiNames = GetPrivateCookie();
+            string cookiNames = GetPrivateCookie(); //Application.Current.Properties["appCookie"].ToString();
 
             var baseAddress = new Uri("https://thisishire.com");
             using (var _Client = new HttpClient(new HttpClientHandler() { UseCookies = false }) { BaseAddress = baseAddress })
@@ -98,8 +74,29 @@ namespace App2.Services
                 }
                 return content.ReasonPhrase;
             }
-
         }
+
+        //public async Task<string> GetCustomResponseFromAPIAsync(string url)
+        //{
+
+        //    string cookiNames = GetPrivateCookie();
+
+        //    var baseAddress = new Uri("https://thisishire.com");
+        //    using (var _Client = new HttpClient(new HttpClientHandler() { UseCookies = false }) { BaseAddress = baseAddress })
+        //    {
+        //        var message = new HttpRequestMessage(HttpMethod.Get, url);
+        //        message.Headers.Add("Cookie", cookiNames);
+        //        var content = await _Client.SendAsync(message);
+        //        content.EnsureSuccessStatusCode();
+
+        //        if (content.IsSuccessStatusCode)
+        //        {
+        //            return await content.Content.ReadAsStringAsync();
+        //        }
+        //        return content.ReasonPhrase;
+        //    }
+
+        //}
 
 
         public async Task<string> PostDataToAPIAsync(Object input, string url)
@@ -201,7 +198,7 @@ namespace App2.Services
 
         public string GetPrivateCookie()
         {
-            return ".AspNetCore.ApplicationCookie=CfDJ8DybItBGHEFJigr0ediXm617gYf9FLMliEDB60eqgXJXQL8eoV6vnKKiHGwjLKKLxgP3V48Szn43Irc3arBK81Rdc-MiW-nyxddTRTBYd6HwnPyuq5jyr7_W31_VwdXDT2dGCF3YDnaQ7OEqXmHp-cLHE-xu2yDr6t8JmxRGPA3fsmiIq_eKUdtFB-t4WSPLS4AfBGXDA38PVrkkFCEKlFsgeEy9dJkiRsIcfhEpo_7Bt_ovNcg8k3J2K3qiAprInVfTDyCp-WZYqjXTKMf9DBlAMhoEZmYDoMzYVdI2ujUHzoo5JjiIsp9mBygO-tepXgfclpaQB0vfzrUoeiwP64HAb00YO43HYWSA6MkGve3hrcVkVjBhaRGCkFHPeP4MAm0zXx-OhL0GtvKzsrzEbiv5SC2wm1wUtY2laR6DPfc0EXK1h_OfRahU2EMAcpdzK-Hv7gXVtdAizZxdJhzW5__oROmK5fNXKOe7ZXR7xZxpS245sDF6_mY62yb44dZjxQNlfIYbFq7QB2SKxzo_r1Uj17_9k-u64CEz0zp-6Kh0gJJ2fn9MGiR8yOoLpW158ZBKc0CTD_Ao0RuGfUPrxFIyq89d3705KOus-F50becZ1PNQuafe8fvsCFYS58LeoRE-NMft2jo_h_nMY6VGmcYt7fcxEdDxOezmaP775l1BqQQqIj65Cg3CwbsmzvjOvbsf96Jm4ClgAUaWDbZwZ8UhcLnVLRWGieiSRCABFCedqu_gUZti-_v4_qgfSatVsU94Gld18fAHwqrii2AvNvfAUmhcUxVFf6Uyvn3oXysM9Us9pY2LkWIf0yimgz0M8egD-wVx4DAEBdmOsipJSQHI82LMBruCGbbo6MY-kS3SdbvAdmskCp9jGzM8gluYNKOp_7SAjRE8WZTtnjwDX5Oh6KyqdZME5SkPG0KELuDTw13gLe9_6T-gBZo1y1CLzs75P1eUOlM2o29F6gBKmAFWNtO7KVM4Qp8Gy9kE2ym7VnZPxHDyli6FkM00M-8aK0S1YJeWnikT4c4F-qwN5UJCeLPw3qq6p2xz5douSNvkUzCkR29j-3GHr_uiAjw_McW1__Q2fid1_qIPU-RDunkLBQ8rAJWdn6ftySwnlT5LfDyU1J8SdUFTsroUBx_GPQ9eYk_etCQCJ0xjPY1xxOve5ljFh9P9MGyQLvXDUkeROFaJrIsOyCDl1IQFKNMCD1l3gdN-EZIl-J574F2NyB6exWJb92sbKue_azWmgviH2dlpSbhqYgAaKnwglQbkCQlwsSe68Ov_ycbgZsAt6-jkfILhvWbsaG4CO_HCjseTuwV-vSmE_uwangYmz8AcrgCr9Y_ieXpHk9hWiEKvScFyDt2eFgWlnFlyYZ_1gCy3dkKDliseTY5yeddAVR_GrGsePnY51VUt9DEce42rcmSYE8x9VVaPl1xgm6MyJfhaULF4ps6t1CZXFs5XK2BWZd1PAJQLO2aY52CPmJxyUZSVGayw32HLC-tKF8aI5TYv6cugKXenowcoObt_Z7pV_kvD4x8ZWB8mjhovvbCtZ82HzrCByhgZ4ljO-lMLysEZsqR-4f8Fsc8m0Zel__9vJg9ZRIaCMGsl_rly7dADfGaxeIRjlqJrTVPw7Pm8RbYP";
+            return ".AspNetCore.ApplicationCookie=CfDJ8DybItBGHEFJigr0ediXm62I5qNSvmzV3pyxy_lx3QRetgkg03mZ6Dij_OY5IiDJ2o--yBG9q8fZOCOn12C6P1nkkI5mqGY5L180aHqGYjMAM646pr-ovVy1QYkejEUheER248Rr2YP2-B-plJVhCl7prg7V3b6HaXkZUHQTHyOERekWVqKcY8Gy35UF12JVKEzYDn3INqht-GtoJpeI3IAgZHfokTLRDAYaa54h0ss0Fdg1rxd1QD-1bqOwd3QtZcpEXAs0C8d_YZqTAWVSImMi77oyUYYzYWXzmFAzaGYQItfbYQg4ShJpyEhv7djkpoH0Br2wTC7khb5uWtGVKbprkxl7n6O72__mSrMLGqC7XZCaODrNQu9g-gpU6Frm7Qzc1TiZjgFY-9wI8URP_d6WRl-ZuwOHmWvgdf3ffuofSSRPzfQIZY5xnmb0PhaWHu_7smfnr0gh5p9ZbQJ0NFRiTGjkznpTh1xa6MDGVbRHHzUlvl0A33O1g_SermiTsm-Q_M-zyMbsR7FaiuwPm8-lKJHppi2whiOkWRYisTcj2M6IZ-9LBMoB-UmJATXp5GxzQiwNzGq0vJjQzBUQf6RFYeOOGkriJSbswkYACugxHa0SZEZMoH02KtDnHF3mFvu-7Rf3vJcPZzamdPyoJSek42UxTWD-jBQqdsz_cFeUBlJx2IFatXg9RttC6QYn9vK8SVeJGENECzq7XU5bBvLUVEf9LUIcjcZc2TC4JIvuz3EbqY3fPj7Ydov2T-SA7Rx4YPiPRN7kiaQIF2o-eM1P50YPQYALzC59Z-_VR4X9ja9zlM5c7N0qRXaOJXlqqvqZbdOrtAXdEyHOwucpICUPitq9aVOw4WNYTiQ-OJ8V8Vbgns9gH7lj92k1qRwAaQymRnkTPdX-prw81g5TeKK2qBXrb6ETQMEErZkECOanp_EDvENbHgvL7fHHMGY09TqaglGY8iI9TvykfUe_5LvH5mgL-29kIdUBlCfrKGRBCrinz-IAwf1b985hLKbZ4Eo5-ZHp9CZU5AUhdanPq_sOG7vNtbFMRAQqfHAfdhNtwe5eRHepXALnP1rzFcUL3fbGFV9wi8hDkliihvfKqcs6hY-bkepvujbScqNI9MHBuU9-60PvffsdZzxNjVWJeX2e-4s_J4S2_QLXv_jLnRE2MvyZyxLANhKQMaKeogdRmcRfSU8-d12sxXwStvGnOF6sOTfRU7MJaVFjOQJ54YaowjsS3O1lOeGqu3fOxRP57GxdSo9YWX91DgQD-jwrxEm_Cu0pPJ4a6lKn-lIIenb1R9UrhpqmngeDwoI1NgraESqkSxajoSFzp6BMdZB0_HqYxt5A1AFmnJLFI8vXLhvk_wP8DpeiAdT-hW0e7qmiNYtY-BxLgTYl4hEfwuZpH8WnYe4bNR6oIXq-Zv6ay9Ale5NUqu88GOhpBujITljBBUFiHYxPEK-b_qTPJ9eb4xY07PU5iXevymXwr9Bf0ZADCwMeQWoZLPuG8qqetciX0Lt-kZfDuUNkqdExFaAAncOud0ui4Mtp6-9dGn1z6vgjyalZlc6lr1rTllRESBgNO8nou0Yp0zVWDtTJSvZqXZhbXgUa--5lLXiMefOnRis3KCvNcPF212iKlg6V0_ai";
         }
 
     }
