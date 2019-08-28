@@ -7,9 +7,131 @@
        xmlns:account="clr-namespace:App2.Views.Account"               
        xmlns:general="clr-namespace:App2.Views.General"
        xmlns:associate="clr-namespace:App2.Views.Associate"
-       mc:Ignorable="d"
+       xmlns:local1="clr-namespace:App2.Views.Routes"
+       mc:Ignorable="d" x:Name="ParentShell"
        Title="App2" Visual="Material"
        x:Class="App2.AppShell">
+
+    <Shell.FlyoutHeader>
+        <local:FlypoutContentHeader/>
+    </Shell.FlyoutHeader>
+
+
+    <ShellItem FlyoutIcon="bars"  Title="Home Page" x:Name="ShellITemOne">
+        <ShellSection Title="Home Page">
+            <ShellContent Title="Home Page" >
+                <local:AboutPage />
+            </ShellContent>
+        </ShellSection>
+    </ShellItem>
+    <ShellItem FlyoutIcon="bars"  Title="Login Page">
+        <ShellSection Title="Login Page">
+            <ShellContent Title="Login Page" >
+                <local:ExpressPage />
+            </ShellContent>
+        </ShellSection>
+    </ShellItem>
+    
+     <ShellItem FlyoutIcon="bars"  Title="Router One Page">
+        <ShellSection Title="Login Page">
+            <ShellContent Title="Login Page"  Route="routerOne">
+                <local1:RouterOne />
+            </ShellContent>
+        </ShellSection>
+        <ShellSection Title="Register Page">
+            <ShellContent Title="Login Page" >
+                <local:ExpressPage />
+            </ShellContent>
+        </ShellSection>
+    </ShellItem>
+
+    <ShellItem FlyoutIcon="bars"  Title="Login View">
+        <ShellSection Title="Login Page">
+            <ShellContent Title="Login Page"  Route="routerOne">
+                <local:LogInPage />
+            </ShellContent>
+        </ShellSection>
+    </ShellItem>
+    <ShellItem FlyoutIcon="bars"  Title="File Load">
+        <ShellSection Title="Fileload Page">
+            <ShellContent Title="Fileload Page"  Route="fileload">
+                <local:Fileload />
+            </ShellContent>
+        </ShellSection>
+    </ShellItem>
+    
+    <!--<Shell.MenuItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                <Label Text="Second Navigation Link"></Label>
+            </ContentView>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>-->
+
+
+
+
+    <!-- 
+        Styles and Resources 
+    -->
+    <!--<Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+  
+    <TabBar>
+        <Tab Title="Browse" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
+        </Tab>
+        <Tab Title="About" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        </Tab>
+    </TabBar>-->
+
+    <!-- Optional Templates 
+    // These may be provided inline as below or as separate classes.
+
+    // This header appears at the top of the Flyout.
+    <Shell.FlyoutHeaderTemplate>
+	<DataTemplate>
+            <Grid>ContentHere</Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    // ItemTemplate is for ShellItems as displayed in a Flyout
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Title, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    // MenuItemTemplate is for MenuItems as displayed in a Flyout
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Text, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    -->
+
     <!--<Shell.FlyoutHeaderTemplate>
         <DataTemplate>
             <Grid BackgroundColor="Black"
@@ -26,11 +148,13 @@
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>-->
 
-    <Shell.FlyoutHeader>
+   
+
+    <!--
+     <Shell.FlyoutHeader>
         <local:FlypoutContentHeader/>
     </Shell.FlyoutHeader>
-
-    <!--<FlyoutItem Title="Login"
+    <FlyoutItem Title="Login"
                 Icon="tab_feed.png">
         <Tab>
             <ShellContent>
@@ -48,7 +172,7 @@
         </Tab>
     </FlyoutItem>-->
 
-    <FlyoutItem Title="Contact Essentilas"
+    <!--<FlyoutItem Title="Contact Essentilas" x:Name="firstflyourItem"
                 Icon="tab_feed.png">
         <Tab>
             <ShellContent>
@@ -61,13 +185,13 @@
         <Tab>
             <ShellContent>
                 <general:TabContent></general:TabContent>
-                <!--<associate:AssociateProfileInfo/>-->
+                <associate:AssociateProfileInfo/>
             </ShellContent>
         </Tab>
     </FlyoutItem>
 
     <FlyoutItem Title="Login Page" FlyoutDisplayOptions="AsSingleItem" Icon="tab_feed.png">
-        <Tab Title="Login" Icon="tab_feed.png" IsEnabled="True">
+        <Tab Title="Login" Icon="tab_feed.png">
             <ShellContent>
                 <account:Login />
             </ShellContent>
@@ -77,7 +201,37 @@
                 <account:Register />
             </ShellContent>
         </Tab>
-    </FlyoutItem>
+        <Tab Title="Login One" Icon="tab_feed.png">
+            <ShellContent>
+                <account:Login />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Register One" Icon="tab_about.png">
+            <ShellContent>
+                <account:Register />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Login Two" Icon="tab_feed.png">
+            <ShellContent>
+                <account:Login />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Register Two" Icon="tab_about.png">
+            <ShellContent>
+                <account:Register />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Login Three" Icon="tab_feed.png">
+            <ShellContent>
+                <account:Login />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Register Three" Icon="tab_about.png">
+            <ShellContent>
+                <account:Register />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>-->
     <!--<TabBar>
         <Tab Title="Login" Icon="tab_feed.png" IsEnabled="True">
             <ShellContent>
@@ -303,5 +457,5 @@
     </Shell.MenuItemTemplate>
 
     -->
-
+    
 </Shell>

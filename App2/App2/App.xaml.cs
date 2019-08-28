@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using App2.Services;
 using App2.Views;
+using App2.Views.Account;
 
 namespace App2
 {
@@ -20,8 +21,8 @@ namespace App2
             DependencyService.Register<MockDataStore>();
             DependencyService.Register<AccountService>();
 
-            
-            MainPage = new AppShell();
+
+            MainPage = new Default();
         }
 
         protected override void OnStart()
