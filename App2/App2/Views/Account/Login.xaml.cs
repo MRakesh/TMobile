@@ -22,7 +22,8 @@ namespace App2.Views.Account
         private async void BtnContavtNavigate_Clicked(object sender, EventArgs e)
         {
             //   await Shell.Current.GoToAsync("contactessential?param1=0598");
-            await Shell.Current.GoToAsync("AssociateProfileInfo");
+            //await Shell.Current.GoToAsync("AssociateProfileInfo");
+            await Shell.Current.GoToAsync("tabContent");
         }
     }
 }

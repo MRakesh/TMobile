@@ -30,7 +30,7 @@
         <local:FlypoutContentHeader/>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Login"
+    <!--<FlyoutItem Title="Login"
                 Icon="tab_feed.png">
         <Tab>
             <ShellContent>
@@ -46,7 +46,7 @@
                 <account:Register />
             </ShellContent>
         </Tab>
-    </FlyoutItem>
+    </FlyoutItem>-->
 
     <FlyoutItem Title="Contact Essentilas"
                 Icon="tab_feed.png">
@@ -60,10 +60,37 @@
                 Icon="tab_feed.png">
         <Tab>
             <ShellContent>
-                <associate:AssociateProfileInfo/>
+                <general:TabContent></general:TabContent>
+                <!--<associate:AssociateProfileInfo/>-->
             </ShellContent>
         </Tab>
     </FlyoutItem>
+
+    <FlyoutItem Title="Login Page" FlyoutDisplayOptions="AsSingleItem" Icon="tab_feed.png">
+        <Tab Title="Login" Icon="tab_feed.png" IsEnabled="True">
+            <ShellContent>
+                <account:Login />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Register" Icon="tab_about.png">
+            <ShellContent>
+                <account:Register />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <!--<TabBar>
+        <Tab Title="Login" Icon="tab_feed.png" IsEnabled="True">
+            <ShellContent>
+                <account:Login />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Register" Icon="tab_about.png">
+            <ShellContent>
+                <account:Register />
+            </ShellContent>
+        </Tab>
+    </TabBar>-->
+
 
     <!--<Shell.MenuItems>
         <MenuItem Command="{Binding ProductTypeCommand}"

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:App2.Views.Account"
+            mc:Ignorable="d"
+             x:Class="App2.Views.General.TabContent">
+  <!--Pages can be added as references or inline-->
+  <!--<ContentPage Title="Tab 1"  />
+  <ContentPage Title="Tab 2" />
+  <ContentPage Title="Tab 3" />-->
+    <ContentPage Title="One">
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="This is content page"></Label>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Two Content">
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="This is content page"></Label>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <!--<NavigationPage Title="Login Page">
+        <x:Arguments>
+            <local:Login/>
+        </x:Arguments>
+    </NavigationPage>-->
+</TabbedPage>

@@ -24,6 +24,7 @@ namespace App2
             Routing.RegisterRoute("loginview", typeof(LogInPage));
             Routing.RegisterRoute("fileload", typeof(Fileload));
             Routing.RegisterRoute("contactessential", typeof(ContactEssentials));
+            Routing.RegisterRoute("tabContent", typeof(TabContent));
 
 
             //Routing for Associates
