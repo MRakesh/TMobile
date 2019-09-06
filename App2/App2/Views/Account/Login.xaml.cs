@@ -16,7 +16,7 @@ namespace App2.Views.Account
         public Login()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel(this);
+            this.BindingContext = new LoginViewModel(this, Navigation);
         }
 
         private async void BtnContavtNavigate_Clicked(object sender, EventArgs e)

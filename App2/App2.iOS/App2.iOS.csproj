@@ -158,4 +158,7 @@
       <Name>App2</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\developer.ico" />
+  </ItemGroup>
 </Project>

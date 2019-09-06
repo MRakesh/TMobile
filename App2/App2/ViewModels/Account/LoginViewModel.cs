@@ -1,6 +1,8 @@
 ﻿using App2.Helpers;
 using App2.Models;
 using App2.Services;
+using App2.Views.Associate;
+using App2.Views.Contact;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,9 +19,10 @@ namespace App2.ViewModels
         public LoginModel LoginModel { get; set; } = new LoginModel();
         public ICommand LoginInCommand { get; }
         private Page _page;
-
-        public LoginViewModel(Page page)
+        public INavigation Navigation { get; set; }
+        public LoginViewModel(Page page, INavigation navigation)
         {
+            this.Navigation = navigation;
             _page = page;
             LoginInCommand = new Command(async () => await LoginAsync());
 
@@ -66,7 +69,23 @@ namespace App2.ViewModels
                     //  await _page.DisplayAlert("Status", response.targetUrl, "OK");
 
 
-                  //  await NavigatetoHomePage(response);
+                    // await NavigatetoHomePage(response);
+
+                    if (response.result.Type.ToLower() == "associate")
+                    {
+                        Application.Current.MainPage = new AssociateShell();
+                        //await Navigation.PushAsync(new NavigationPage(new AssociateShell()));
+                    }
+                    //   await Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
+                    else if (response.result.Type.ToLower() == "recruiter")
+                    {
+                        Application.Current.MainPage = new ContactShell();
+                        //await Navigation.PushAsync(new NavigationPage(new ContactShell()));
+                    }
+                    // await Shell.Current.GoToAsync(new ShellNavigationState("ContactHome"), true);
+
+
+
                 }
 
             }

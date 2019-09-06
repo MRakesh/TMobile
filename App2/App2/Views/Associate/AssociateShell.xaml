@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:local="clr-namespace:App2.Views"
+       mc:Ignorable="d" x:Name="ParentShell"
+       Title="App2" Visual="Material"
+       x:Class="App2.Views.Associate.AssociateShell">
+
+    <Shell.FlyoutHeader>
+        <local:FlypoutContentHeader/>
+    </Shell.FlyoutHeader>
+
+
+    <ShellItem FlyoutIcon="bars"  Title="Associte shell Home Page" x:Name="ShellITemOne">
+        <ShellSection Title="Home Page">
+            <ShellContent Title="Home Page" >
+                <local:AboutPage />
+            </ShellContent>
+        </ShellSection>
+    </ShellItem>
+    
+    
+</Shell>

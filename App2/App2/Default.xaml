@@ -14,26 +14,32 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="12*"/>
-                        <ColumnDefinition Width="18*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="14*"/>
                         <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="26*"/>
                     </Grid.ColumnDefinitions>
                     <Image Aspect="AspectFill" Grid.Row="0" Grid.Column="0"  HorizontalOptions="StartAndExpand"
-                   Source="sms.png"
+                   Source="developer.ico"
                    Opacity="0.6" />
 
-                    <Label Text="Login" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" TextColor="Blue" VerticalOptions="CenterAndExpand">
+                    <Label Text="Login" Grid.Row="0" Grid.Column="1" FontSize="16" TextColor="Blue" VerticalOptions="CenterAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding LoginInCommand}" NumberOfTapsRequired="1" />
                         </Label.GestureRecognizers>
                     </Label>
 
-                    <!--<Label x:Name="lblLogin" Text="Login"  Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" TextColor="Blue" VerticalOptions="CenterAndExpand" />-->
+                    <Label Text="Register"  Grid.Row="0" Grid.Column="2" FontSize="16"  TextColor="Blue" VerticalOptions="CenterAndExpand" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RegisterCommand}" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
 
-                    <Label Text="Register"  Grid.Row="0" Grid.Column="2"  HorizontalOptions="FillAndExpand" TextColor="Blue" VerticalOptions="CenterAndExpand" />
-
-                    <Label Text="Company"  Grid.Row="0" Grid.Column="3"  HorizontalOptions="FillAndExpand" TextColor="Blue" VerticalOptions="CenterAndExpand"/>
+                    <Label Text="Company"  Grid.Row="0" Grid.Column="3" FontSize="16"  TextColor="Blue" VerticalOptions="CenterAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CompanyCommand}" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
 
                 </Grid>
             </Frame>

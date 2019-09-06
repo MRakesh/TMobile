@@ -8,14 +8,25 @@
   <ContentView.Content>
         <Grid BackgroundColor="Black"
               HeightRequest="300">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
             <Image Aspect="AspectFill"
-                   Source="bird.jfif"
+                   Source="bird.jfif" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
                    Opacity="0.6" />
-            <Label Text="Header Page." x:Name="lblUserName"
+            <!--<Label Text="Header Page." x:Name="lblUserName" Grid.Row="1" Grid.Column="0" 
                    TextColor="White"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" />
+                   VerticalTextAlignment="Center" />-->
+            <Button Text="Home" x:Name="btnHomePage" Clicked="BtnHomePage_Clicked" Grid.Row="1" Grid.Column="0" ></Button>
+            <Button Text="DashBoard" x:Name="btnDashboard" Clicked="BtnDashboard_Clicked" Grid.Row="1" Grid.Column="1" ></Button>
         </Grid>
     </ContentView.Content>
 </ContentView>

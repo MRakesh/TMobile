@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App2.Views.Associate;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,17 @@ namespace App2.Views
         {
             InitializeComponent();
 
-            lblUserName.Text = "User Exists Give Unique Name";
+            //lblUserName.Text = "User Exists Give Unique Name";
+        }
+
+        private void BtnHomePage_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new AppShell();
+        }
+
+        private void BtnDashboard_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new AssociateShell();
         }
     }
 }

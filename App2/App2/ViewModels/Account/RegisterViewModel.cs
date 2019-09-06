@@ -1,6 +1,8 @@
 ﻿using App2.Helpers;
 using App2.Models;
 using App2.Services;
+using App2.Views.Associate;
+using App2.Views.Contact;
 using Newtonsoft.Json;
 using Plugin.Media;
 using System;
@@ -94,7 +96,19 @@ namespace App2.ViewModels
                         if (loginResponse.result.Message.ToLower().Contains("bad"))
                             await _page.DisplayAlert("Status", "Wrong Login and Email...", "OK");
                         else
-                            await NavigatetoHomePage(loginResponse);
+                        {
+                            if (loginResponse.result.Type.ToLower() == "associate")
+                            {
+                                await _page.Navigation.PushAsync(new AssociateShell());
+                            }
+                            //   await Shell.Current.GoToAsync(new ShellNavigationState("AssociateHome"), true);
+                            else if (loginResponse.result.Type.ToLower() == "recruiter")
+                            {
+                                await _page.Navigation.PushAsync(new ContactShell());
+                            }
+                            // await Shell.Current.GoToAsync(new ShellNavigationState("ContactHome"), true);
+                        }
+                        //await NavigatetoHomePage(loginResponse);
                     }
                 }
                 else

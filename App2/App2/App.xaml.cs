@@ -22,7 +22,7 @@ namespace App2
             DependencyService.Register<AccountService>();
 
 
-            MainPage = new Default();
+            MainPage = new NavigationPage(new Default());
         }
 
         protected override void OnStart()

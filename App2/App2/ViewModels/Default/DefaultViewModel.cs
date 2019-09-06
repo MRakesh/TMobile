@@ -28,17 +28,19 @@ namespace App2.ViewModels
         private async Task LoginAsync()
         {
             //_page.DisplayAlert("Statuus", "Thsi sthe message", "ok");
-           // await Navigation.PushAsync( new NavigationPage(new Login()));
+           await Navigation.PushAsync( new NavigationPage(new Login()));
             //_page.Navigation.PushAsync();
-            await Shell.Current.GoToAsync(new ShellNavigationState("App2.Views.Account/Login"), true);
+            //await Shell.Current.GoToAsync(new ShellNavigationState("App2.Views.Account/Login"), true);
         }
         private async Task RegisterAsync()
         {
-            await Shell.Current.GoToAsync(new ShellNavigationState("Register"), true);
+            await Navigation.PushAsync(new NavigationPage(new Register()));
+            //await Shell.Current.GoToAsync(new ShellNavigationState("Register"), true);
         }
         private async Task CompanyAsync()
         {
-            await Shell.Current.GoToAsync(new ShellNavigationState("CompanyRegister"), true);
+            await Navigation.PushAsync(new NavigationPage(new Company()));
+            //await Shell.Current.GoToAsync(new ShellNavigationState("CompanyRegister"), true);
         }
     }
 }
