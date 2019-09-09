@@ -88,4 +88,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dtos\Home\" />
+    <Folder Include="Dtos\Recruiter\" />
+  </ItemGroup>
 </Project>

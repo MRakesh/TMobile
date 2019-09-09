@@ -12,7 +12,6 @@
         <local:FlypoutContentHeader/>
     </Shell.FlyoutHeader>
 
-
     <ShellItem FlyoutIcon="bars"  Title="Recruiter Shell Home Page" x:Name="ShellITemOne">
         <ShellSection Title="Home Page">
             <ShellContent Title="Home Page" >
