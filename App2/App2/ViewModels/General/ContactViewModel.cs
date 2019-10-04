@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-
-using App2.Models;
-using Xamarin.Essentials;
+﻿using App2.Associates.Dtos;
 using App2.Services;
+using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using App2.Dtos;
+using Xamarin.Forms;
 
 namespace App2.ViewModels
 {
